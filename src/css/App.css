@@ -1,11 +1,16 @@
 :root{
-  --theme-one:#A783EE;
-  --theme-two:#83EEA7;
+  /* --theme-one:#fee265;
+  --theme-two:#0b6b96; */
+  --theme-one:#0e144f;
+  --theme-two:#416a87;
+  --text-color2:#c4d4c8;
+  --text-color:#f6f0da;
 }
 
 a{
   text-decoration:none;
 }
+
 body { 
   /* background: #333; 
   text-align: center;
@@ -18,15 +23,29 @@ body {
 .home-nav{
   /* position:-moz-sticky; */
   position: sticky;
-  background: #333; 
+  background: var(--theme-one); 
+
   top:0;
+}
+.home-nav > div > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow:hidden;
+}
+
+ul > * {
+  float:left;
+  margin:0;
+  padding-left:1.7vh;
 }
 
 .title{
+  /* font-size:40px;;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: white; */
   position:relative;
-  margin:0;
-  padding:1.7vh;
-  background: linear-gradient(to right, var(--theme-one) 20%, var(--theme-two) 40%, var(--theme-two) 60%, var(--theme-one) 80%);
+  background: linear-gradient(to right, var(--text-color2) 20%, var(--theme-two), 40%, var(--theme-two) 60%, var(--text-color2) 80%);
   background-size: 200% auto;
   
   color: #000;
@@ -34,18 +53,32 @@ body {
   -moz-text-fill-color: transparent;
   -webkit-text-fill-color: transparent;
   
-  /* animation: shine 5s linear infinite; */
+  animation: shine 5s linear infinite;
 
 }
 .title:hover{
-  animation:shine 2s linear infinite;
+  /* animation: shine 2s linear infinite; */
 }
+
   @keyframes shine {
     to {
       background-position: 200% center;
     }
   }
 
-h2{
-  margin-top:200vh;
+.landing{
+  height:75vh;
+  background:var(--theme-one)
+  /* background:#e6ccab */
+
+}
+
+.about{
+  height:55vh;
+
+}
+
+.home{
+  margin: 0;
+  color:var(--text-color);
 }

@@ -9,19 +9,39 @@ class Landing extends Component {
             <div>
                 <nav className="home-nav">
                     {/* <a href="/">tsurulingo</a> */}
-                    <Link to="/" className="blank"><h1 className="title">TSURULINGO</h1></Link>
+                    <div className="nav-elements">
+                        <ul>
+                            <li>
+                                <Link to="/" className="blank"><h1 className="title test-elem">TSURULINGO</h1></Link>
+                                {/* 
+                                DROP-DOWN/POP-UP DIV
+                                https://www.w3schools.com/howto/howto_css_login_form.asp
+                                */}
+                            </li>
+
+                            {/* <li>
+                                <h1 className="test-elem">HIHI</h1>
+                            </li> */}
+                        </ul>
+                    </div>
                     
-                    {/* 
-                    DROP-DOWN/POP-UP DIV
-                    https://www.w3schools.com/howto/howto_css_login_form.asp
-                     */}
                 </nav>
+                <div className="landing">
+                    
+                    <h1 className="home">HOME PAGE - [insert pretty CSS here] nothing here except for welcome and login</h1>
+                    {/* <h1 className="home">HOME PAGE - [insert pretty CSS here] nothing here except for welcome and login</h1> */}
+                            
+                </div>
 
-                <h1 className="home">HOME PAGE - [insert pretty CSS here] nothing here except for welcome and login</h1>
+                <div className="about">
+                    <h2>ABOUT THE APP</h2>
+                    
+                </div>
 
-                <h2>ABOUT THE APP</h2>
+                <footer>
+                    misc info
 
-
+                </footer>
             </div>
         );
     }

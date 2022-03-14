@@ -14,8 +14,8 @@ class App extends Component {
       <div>
   <Router>
       {/* TESTING AND DEBUGGING LINKS - DELETE THESE */}
-      <Link to="/">HOME</Link> |
-      <Link to="/login">LOGIN</Link> |
+      {/* <Link to="/">HOME</Link> | */}
+      {/* <Link to="/login">LOGIN</Link> | */}
       {/* <Link to={`/lang/${lang}`}>lang</Link> |  */}
       {/* GET GLOBAL STATE <-- look into context api */}
       
