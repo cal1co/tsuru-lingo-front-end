@@ -8,19 +8,16 @@ import LessonBrief from './components/LessonBrief'
 
 
 
-
-
 class App extends Component {
   render() {
     return (
       <div>
   <Router>
-    {/* DELETE THESE LINKS */}
+      {/* TESTING AND DEBUGGING LINKS - DELETE THESE */}
       <Link to="/">HOME</Link> |
       <Link to="/login">LOGIN</Link> |
       {/* <Link to={`/lang/${lang}`}>lang</Link> |  */}
       {/* GET GLOBAL STATE <-- look into context api */}
-      
       
       
       <Routes>
@@ -30,8 +27,8 @@ class App extends Component {
         <Route exact path="/learn/:lang/:lesson/" element={ <Lesson/> } />
         <Route exact path="/learn/:lang/:lesson/brief" element={ <LessonBrief/> } />
       </Routes>
-  </Router>
 
+  </Router>
 
       </div>
     );
