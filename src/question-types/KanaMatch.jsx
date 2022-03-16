@@ -24,7 +24,7 @@ function KanaMatch(props) {
         <div>
 
             <button onClick={() => console.log(words)}>test props</button>
-            
+            <h3>THIS IS KANA MATCH</h3>
         </div>
     );
 }

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,700&family=Spline+Sans:wght@300;600&display=swap');
+
+
 :root{
   /* --theme-one:#fee265;
   --theme-two:#0b6b96; */
@@ -19,7 +22,10 @@ a{
   text-decoration:none;
 }
 
-body { 
+body{ 
+  font-family: 'Noto Sans', sans-serif;
+  font-weight:700
+  /* font-family: 'Spline Sans', sans-serif; */
   /* background: #333; 
   text-align: center;
   min-height: 100%;
@@ -162,7 +168,7 @@ ul > * {
 
 .user-controls{
   position:absolute;
-  height:15vh;
+  height:10vh;
   width:100%;
   top: 85vh;
   bottom: 0;

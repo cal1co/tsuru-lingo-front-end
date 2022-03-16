@@ -8,7 +8,7 @@ import React from 'react';
 function PictureMatch(props) {
     return (
         <div>
-            
+            <h3>THIS IS PICTURE MATCH</h3>
         </div>
     );
 }

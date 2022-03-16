@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react' 
 import { useParams } from 'react-router-dom'
 import KanaMatch from '../question-types/KanaMatch'
+import PictureMatch from '../question-types/PictureMatch'
 
 
 
@@ -16,9 +17,10 @@ function Lesson(props) {
     const [vocab, useVocab] = useState([])
     const [data, useData] = useState({})
     const [loading, useLoading] = useState(false)
+    const [progress, useProgress] = useState(0)
+    const [questions, useQuestions] = useState(0)
+    const [questionOrder, useQuestionOrder] = useState(0)
     const { lesson } = useParams()
-
-   
 
 
     useEffect(()=>{
@@ -43,6 +45,28 @@ function Lesson(props) {
             })
     }
 
+    function next(){
+        console.log("progress:", progress)
+        useProgress(progress+1)
+
+        function randomise(input){
+            return input.sort((a,b) => 0.5 - Math.random())
+        } 
+
+        let shuffle = randomise(vocab)
+        console.log("*******SHUFFLE ARR********", shuffle )
+        useQuestions(shuffle)
+
+
+        let qArr = Array(shuffle.length).fill().map((e, index) => index + 1)
+
+        let order = randomise(qArr)
+        console.log("*******CARD ORDER ARR********", order )
+        useQuestionOrder(shuffle)
+    }
+
+
+
     return (
         <div className="lesson-plan">
             <nav className='lesson-header'>
@@ -52,26 +76,34 @@ function Lesson(props) {
             </nav>
 
 
+            {title.toUpperCase()}
 
+            <div className="cards">
             {
                 loading
                 ?
                 <p>loading...</p>
                 :
-                <div>
-                    <div className="cards">
-                    {title.toUpperCase()}
+                    
+                    progress < 1
+                    ?
+                    <div>
+
+                        {/* LESSON INTRO GOES HERE */}
+                        <h1>LESSON BRIEF</h1>
+                    </div>
+                    :
+                    progress < 2
+                    ?
                         <KanaMatch vocab={vocab}/>
-                        {/* Load components here */}
-                        
-                    </div>
-                    <div className="user-controls">
-                        <button>Next</button>    
-                    </div>
-                </div>
+                    :
+                        <PictureMatch />
             }
+                    </div>
 
-
+<           div className="user-controls">
+                        <button onClick={next}>Next</button>    
+            </div>
             {/* {
             vocab.length>1
             ?
