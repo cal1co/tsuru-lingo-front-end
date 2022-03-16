@@ -31,9 +31,13 @@ class Landing extends Component {
                     <h1 className="home">HOME PAGE - [insert pretty CSS here] nothing here except for welcome and login</h1>
                     {/* <h1 className="home">HOME PAGE - [insert pretty CSS here] nothing here except for welcome and login</h1> */}
                     <div className="signup">
+                        <Link to="/">
                         <button className="button new-acc">GET STARTED</button>
+                            </Link>
+                        
+
                         <Link to="/login">
-                            <button className="button exist-acc">I ALREADY HAVE AN ACCOUNT</button>
+                        <button className="button exist-acc">I ALREADY HAVE AN ACCOUNT</button>
                         </Link>
                     </div>
                 </div>

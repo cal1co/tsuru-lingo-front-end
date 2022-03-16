@@ -63,7 +63,7 @@ ul > * {
   -webkit-text-fill-color: transparent;
   
   animation: shine 5s linear infinite;
-
+  margin:0px;
 }
 .title:hover{
   /* animation: shine 2s linear infinite; */
@@ -107,9 +107,10 @@ ul > * {
 }
 
 .exist-acc{
+  /* position:absolute; */
   color:white;
   background-color:var(--lingo-1);
-  border-color:var(--lingo-1dark)
+  border-color:var(--lingo-1dark);
 }
 .exist-acc:hover{
   /* background-color:var(--theme-two) */
@@ -123,7 +124,7 @@ ul > * {
 }
 
 .new-acc{
-  /* position:fixed; */
+  /* position:relative; */
   color:white;
   background-color:var(--lingo-2);
   border-color:var(--lingo-2dark)
@@ -135,6 +136,39 @@ ul > * {
   margin-top:13px;
   border-bottom:2px solid var(--lingo-2dark)
 }
+
 .signup{
   height:40vh;
+  display: flex;
+}
+.signup > * {
+  max-height: 50px;
+}
+
+
+.lesson-plan{
+  position:relative;
+  top:0px;
+}
+
+.lesson-header{
+  height:5vh;
+}
+.cards{
+  height:80vh;
+  overflow:hidden;
+}
+
+
+.user-controls{
+  position:absolute;
+  height:15vh;
+  width:100%;
+  top: 85vh;
+  bottom: 0;
+  border-top:1px solid slategray;
+  overflow:hidden;
+}
+body{
+  top:0px;
 }
