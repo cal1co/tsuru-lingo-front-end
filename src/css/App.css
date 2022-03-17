@@ -264,5 +264,6 @@ body{
 
 .selected{
   background-color:var(--lingo-1);
-  cursor:disabled;
+  /* cursor:not-allowed; */
+  pointer-events:none;
 }

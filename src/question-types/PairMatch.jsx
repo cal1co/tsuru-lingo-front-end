@@ -51,21 +51,19 @@ function PairMatch(props) {
             if (selection[0].word !== index.word){
                 console.log('WRONG CHOICE!')
                 selected.target.className = ''
+                e.target.className = ''
+                useSelection([])
             } else {
                 console.log('CORRECT CHOICE!!!')
+                e.target.className = 'selected'
                 useSelection([])
             }
         } else {
             useSelection([index])
             console.log('selection:', selection)
+            e.target.className = 'selected'
+            useSelected(e)
         }
-        if (selected){
-            useSelected(!selected)
-        } else {
-            useSelected(!selected)
-        }
-        e.target.className = 'selected'
-        useSelected(e)
     }
     return (
         <div>
@@ -74,7 +72,7 @@ function PairMatch(props) {
                 <div className="questions pair-match">
                     {
                     words.map((e, index) => {
-                        return <div className={''} onClick={(e) => makeSelection(words[index], e)}><p>{e.kana}</p></div>
+                        return <div className={''} onClick={(e) => makeSelection(words[index], e)}>{e.kana}</div>
                     })
                     }
 
@@ -83,7 +81,7 @@ function PairMatch(props) {
                 <div className="answers pair-match">
                     {
                     options.map((e, index)=> {
-                        return <div className={''} onClick={(e) => makeSelection(options[index], e)}><p>{e.word}</p></div>
+                        return <div className={''} onClick={(e) => makeSelection(options[index], e)}>{e.word}</div>
                     })
                     }
                 </div>
