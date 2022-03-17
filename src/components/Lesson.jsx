@@ -23,8 +23,10 @@ function Lesson(props) {
     const [questions, useQuestions] = useState(0)
     const [questionOrder, useQuestionOrder] = useState([])
     const [progressedOrder, useProgressedOrder] = useState([])
+    const [strikes, useStrikes] = useState(0)
+    const [result, useResult] = useState([])
+    const [nextStage, useNextStage] = useState(false)
     const { lesson } = useParams()
-
 
     useEffect(()=>{
         getModule()
@@ -35,7 +37,7 @@ function Lesson(props) {
     }, [vocab])
 
     async function getModule(){
-        console.log('Getting module!')
+        // console.log('Getting module!')
         useLoading(true)
         let res = await axios.get(`${API_KEY}/JP/${lesson}`) // this is unnecessary 
             .then((res) => {
@@ -46,7 +48,7 @@ function Lesson(props) {
                 useLoading(false)
             })
             .catch((err) => {
-                console.log('error fetching data:', err)
+                // console.log('error fetching data:', err)
             })
             
         // getGameData()
@@ -61,7 +63,7 @@ function Lesson(props) {
         } 
 
         let shuffle = randomise(vocab)
-        console.log("*******SHUFFLE ARR********", shuffle )
+        // console.log("*******SHUFFLE ARR********", shuffle )
         useQuestions(shuffle)
 
 
@@ -69,7 +71,7 @@ function Lesson(props) {
         let qArr = Array(4).fill().map((e, index) => index + 1)
 
         let order = randomise(qArr)
-        console.log("*******CARD ORDER ARR********", order )
+        // console.log("*******CARD ORDER ARR********", order )
         useQuestionOrder(order)
         // let secondOrder = order.shuffle()
         let copy = [...order, ...randomise(order)]
@@ -79,16 +81,30 @@ function Lesson(props) {
     function next(){
         if (progressedOrder.length>0){
             const chosenGame = progressedOrder.shift()
-            console.log('PROGRESSING GAME !!!! ', chosenGame)
+            // console.log('PROGRESSING GAME !!!! ', chosenGame)
             useProgress(chosenGame)
             useProgressedOrder(progressedOrder)
         } else {
-            console.log(`you've progressed through the array!!`, questionOrder)
+            // console.log(`you've progressed through the array!!`, questionOrder)
         }
+        useNextStage(false)
     }
     function randomNum(){
         return Math.floor(Math.random(4))
     }
+
+    function questionResults(outcome){
+        console.log('THIS IS BEING CALLED FROM THE CHILD!!!', outcome)
+        useResult(outcome)
+        if (outcome.length === 0){
+
+        } else {
+            useNextStage(true)
+
+        }
+    }
+
+
 
     return (
         <div className="lesson-plan">
@@ -118,21 +134,21 @@ function Lesson(props) {
                         :
                         progress == 1
                         ?
-                            <KanaMatch vocab={vocab}/>
+                            <KanaMatch vocab={vocab} sendResult={questionResults}/>
                         :
                         progress == 2
                         ?
-                            <PictureMatch vocab={vocab}/>
+                            <PictureMatch vocab={vocab} sendResult={questionResults}/>
                         :
                         progress == 3 
                         ?
-                            <PairMatch vocab={vocab}/>
+                            <PairMatch vocab={vocab} sendResult={questionResults}/>
                         :
-                            <NoEngMatch vocab={vocab}/> // DON'T RENDER THIS FOR THE HIRAGANA ONLY ONES, ONLY FOR VOCABULARY!!!
+                            <NoEngMatch vocab={vocab} sendResult={questionResults}/> // DON'T RENDER THIS FOR THE HIRAGANA ONLY ONES, ONLY FOR VOCABULARY!!!
                 }
             </div>
 
-<           div className="user-controls">
+<           div className={(!nextStage ? '' : (result ? 'control-correct' : 'control-incorrect')) + " user-controls"}>
                         <button onClick={next}>Next</button>    
             </div>
             {/* {

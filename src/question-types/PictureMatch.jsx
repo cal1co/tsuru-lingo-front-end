@@ -8,8 +8,8 @@ import { useState, useEffect } from 'react'
 
 function PictureMatch(props) {
     const [words, useWords] = useState([])
-    const [kanaIndex, useKanaIndex] = useState([])
     const [options, useOptions] = useState([])
+    const [result, useResult] = useState([])
 
 
     useEffect(()=>{
@@ -17,6 +17,10 @@ function PictureMatch(props) {
         vocabulary(props.vocab)
         console.log('******',props)
     }, [])
+
+    useEffect(()=>{
+        props.sendResult(result)
+    },[result])
 
     function randomise(input){
         return input.sort((a,b) => 0.5 - Math.random())
@@ -44,8 +48,10 @@ function PictureMatch(props) {
         console.log('User selected option:', num)
         if (options[num].kana===props.vocab[0].kana){
             console.log('CORRECT!!', props.vocab[0].kana)
+            useResult(true)
         } else {
             console.log('INCORRECT!!', options[num].kana)
+            useResult(false)
         }
     }
 

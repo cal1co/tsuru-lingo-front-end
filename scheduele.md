@@ -14,3 +14,14 @@ TODO: SIGNUP WITH GOOGLE
 
 
 
+abstract class Fish {
+    swim() {return '>>>>>>'};
+};
+
+class Shark extends Fish {
+    face:'shark';
+};
+
+class Tuna extends Fish {
+    face:'tuna';
+};

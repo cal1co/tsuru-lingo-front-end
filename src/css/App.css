@@ -157,7 +157,7 @@ ul > * {
 
 .user-controls{
   position:absolute;
-  height:10vh;
+  height:15vh;
   width:100%;
   top: 85vh;
   bottom: 0;
@@ -269,4 +269,11 @@ body{
 }
 .questions > *, .answers >*{
   cursor:pointer;
+}
+
+.control-correct{
+  background-color: green;
+}
+.control-incorrect{
+  background-color: red;
 }
