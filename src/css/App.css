@@ -267,3 +267,6 @@ body{
   /* cursor:not-allowed; */
   pointer-events:none;
 }
+.questions > *, .answers >*{
+  cursor:pointer;
+}

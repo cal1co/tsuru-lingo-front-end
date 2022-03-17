@@ -15,7 +15,9 @@ function PairMatch(props) {
     const [options, useOptions] = useState([])
     const [selection, useSelection] = useState([])
     const [selected, useSelected] = useState([])
-
+    const [correct, useCorrect] = useState(0)
+    const [batsu, useBatsu] = useState(0)
+    
     useEffect(()=>{
         // useVocab(props)
         vocabulary(props.vocab)
@@ -53,10 +55,12 @@ function PairMatch(props) {
                 selected.target.className = ''
                 e.target.className = ''
                 useSelection([])
+                useBatsu(batsu+1)
             } else {
                 console.log('CORRECT CHOICE!!!')
                 e.target.className = 'selected'
                 useSelection([])
+                useCorrect(correct+1)
             }
         } else {
             useSelection([index])
@@ -65,6 +69,15 @@ function PairMatch(props) {
             useSelected(e)
         }
     }
+
+    if (correct === words.length){
+        console.log('ALL CORRECT!!!')
+    }
+
+    if (batsu === 3){
+        console.log(`YOU'RE OUT`, batsu, 'ERRORS')
+    }
+
     return (
         <div>
             <h1>This is pair match</h1>
@@ -72,7 +85,7 @@ function PairMatch(props) {
                 <div className="questions pair-match">
                     {
                     words.map((e, index) => {
-                        return <div className={''} onClick={(e) => makeSelection(words[index], e)}>{e.kana}</div>
+                        return <div className={''} key={index} onClick={(e) => makeSelection(words[index], e)}>{e.kana}</div>
                     })
                     }
 
@@ -81,7 +94,7 @@ function PairMatch(props) {
                 <div className="answers pair-match">
                     {
                     options.map((e, index)=> {
-                        return <div className={''} onClick={(e) => makeSelection(options[index], e)}>{e.word}</div>
+                        return <div className={''} key={index} onClick={(e) => makeSelection(options[index], e)}>{e.word}</div>
                     })
                     }
                 </div>
