@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Dictionary from './Dictionary'
 import { useNavigate } from "react-router-dom";
-import { useState } from 'react' 
+import { useState, useEffect } from 'react' 
 import axios from 'axios';
 
 
@@ -14,6 +14,15 @@ function StudyRoom() {
 
     const [lang, setLang] = useState('')
     const [modules, setModules] = useState([])
+
+
+    useEffect(() => {
+        getLang()
+
+
+    }, [lang])
+
+
 
     function dict(){
         // console.log('dict')
@@ -41,7 +50,7 @@ function StudyRoom() {
         <div>
             <h1>PARENT COMPONENT FOR LESSON AND LESSON BRIEF</h1>
             <button onClick={dict}>Dict</button>
-            <button onClick={getLang}>get lang</button>
+            {/* <button onClick={getLang}>get lang</button> */}
 
 
             <div className="modules" key="display">
@@ -50,7 +59,7 @@ function StudyRoom() {
                     ?
                     modules.map((e, index) => {
                         return(
-                            <div key={index} onClick={() => goToLesson(index)}>
+                            <div className="module-title" key={index} onClick={() => goToLesson(index)}>
                                 <h2 key={index}>
                                     {e.title}
                                 </h2>

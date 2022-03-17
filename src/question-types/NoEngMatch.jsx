@@ -40,6 +40,15 @@ function WordMatch(props) {
         useOptions(options)
     }
 
+    function select(num){
+        console.log('User selected option:', num)
+        if (options[num].kana===props.vocab[0].kana){
+            console.log('CORRECT!!', props.vocab[0].kana)
+        } else {
+            console.log('INCORRECT!!', options[num].kana)
+        }
+    }
+
     return (
         <div>
 
@@ -51,17 +60,17 @@ function WordMatch(props) {
                 <img src={props.vocab[0].image} />
                 <div className="kana-options">
 
-                    <div className="option">
+                    <div className="option" onClick={()=>select(0)}>
                         <div className="option-val">
                             <h3>{options[0].kana}</h3>
                         </div>
                     </div>
-                    <div className="option">
+                    <div className="option" onClick={()=>select(1)}>
                         <div className="option-val">
                             <h3>{options[1].kana}</h3>
                         </div>
                     </div>
-                    <div className="option">
+                    <div className="option" onClick={()=>select(2)}>
                         <div className="option-val">
                             <h3>{options[2].kana}</h3>
                         </div>

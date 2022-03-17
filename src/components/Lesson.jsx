@@ -99,7 +99,7 @@ function Lesson(props) {
 
             </nav>
 
-            {part}
+            {/* {part} */}
 
             <div className="cards">
                 {

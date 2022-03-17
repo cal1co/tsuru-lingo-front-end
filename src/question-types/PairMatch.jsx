@@ -13,6 +13,8 @@ function PairMatch(props) {
     const [words, useWords] = useState([])
     const [kanaIndex, useKanaIndex] = useState([])
     const [options, useOptions] = useState([])
+    const [selection, useSelection] = useState([])
+    const [selected, useSelected] = useState([])
 
     useEffect(()=>{
         // useVocab(props)
@@ -42,17 +44,48 @@ function PairMatch(props) {
         useOptions(options)
     }
 
+    function makeSelection(index, e){
+        console.log('PAIR MATCH SELECTION MADE:', index)
+        if (selection.length > 0){
+            console.log(selection)
+            if (selection[0].word !== index.word){
+                console.log('WRONG CHOICE!')
+                selected.target.className = ''
+            } else {
+                console.log('CORRECT CHOICE!!!')
+                useSelection([])
+            }
+        } else {
+            useSelection([index])
+            console.log('selection:', selection)
+        }
+        if (selected){
+            useSelected(!selected)
+        } else {
+            useSelected(!selected)
+        }
+        e.target.className = 'selected'
+        useSelected(e)
+    }
     return (
         <div>
             <h1>This is pair match</h1>
             <div className="kana-match-grid">
                 <div className="questions pair-match">
-                    {words.map((e)=> {return <p>{e.kana}</p>})}
+                    {
+                    words.map((e, index) => {
+                        return <div className={''} onClick={(e) => makeSelection(words[index], e)}><p>{e.kana}</p></div>
+                    })
+                    }
 
                 </div>
 
                 <div className="answers pair-match">
-                    {options.map((e)=> {return <p>{e.word}</p>})}
+                    {
+                    options.map((e, index)=> {
+                        return <div className={''} onClick={(e) => makeSelection(options[index], e)}><p>{e.word}</p></div>
+                    })
+                    }
                 </div>
             </div>
 

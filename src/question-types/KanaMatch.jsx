@@ -42,6 +42,14 @@ function KanaMatch(props) {
         let options = randomise(optionArr)
         useOptions(options)
     }
+    function select(num){
+        console.log('User selected option:', num)
+        if (options[num].kana===props.vocab[0].kana){
+            console.log('CORRECT!!', props.vocab[0].kana)
+        } else {
+            console.log('INCORRECT!!', options[num].kana)
+        }
+    }
 
     return (
         <div>
@@ -54,18 +62,18 @@ function KanaMatch(props) {
                 <h1>{props.vocab[0].kana}</h1>
                 <div className="kana-options">
 
-                    <div className="option">
-                        <div className="option-val">
+                    <div className="option" onClick={()=>select(0)}>
+                        <div className="option-val choice-1" >
                             <h3>{options[0].word}</h3>
                         </div>
                     </div>
-                    <div className="option">
-                        <div className="option-val">
+                    <div className="option" onClick={()=>select(1)}>
+                        <div className="option-val choice-2" >
                             <h3>{options[1].word}</h3>
                         </div>
                     </div>
-                    <div className="option">
-                        <div className="option-val">
+                    <div className="option" onClick={()=>select(2)}>
+                        <div className="option-val choice-3" >
                             <h3>{options[2].word}</h3>
                         </div>
                     </div>
