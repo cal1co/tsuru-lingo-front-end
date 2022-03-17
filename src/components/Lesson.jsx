@@ -79,16 +79,27 @@ function Lesson(props) {
     }
 
     function next(){
-        if (progressedOrder.length>0){
-            const chosenGame = progressedOrder.shift()
-            // console.log('PROGRESSING GAME !!!! ', chosenGame)
-            useProgress(chosenGame)
-            useProgressedOrder(progressedOrder)
+        if (strikes === 2){
+            console.log('OH NO, YOU FAILED THIS LESSON')
         } else {
-            // console.log(`you've progressed through the array!!`, questionOrder)
+            if (progressedOrder.length>0){
+                const chosenGame = progressedOrder.shift()
+                // console.log('PROGRESSING GAME !!!! ', chosenGame)
+                useProgress(chosenGame)
+                useProgressedOrder(progressedOrder)
+            } else {
+                // console.log(`you've progressed through the array!!`, questionOrder)
+            }
+            useNextStage(false)
+            if (!result){
+                console.log(strikes)
+                useStrikes(strikes + 1)
+                
+            }
         }
-        useNextStage(false)
+        
     }
+
     function randomNum(){
         return Math.floor(Math.random(4))
     }
@@ -100,7 +111,6 @@ function Lesson(props) {
 
         } else {
             useNextStage(true)
-
         }
     }
 
