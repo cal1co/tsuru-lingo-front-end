@@ -45,21 +45,15 @@ function PairMatch(props) {
     return (
         <div>
             <h1>This is pair match</h1>
+            <div className="kana-match-grid">
+                <div className="questions pair-match">
+                    {words.map((e)=> {return <p>{e.kana}</p>})}
 
-            <div className="questions">
-                {words[0].kana}
-                {words[1].kana}
-                {words[2].kana}
-                {words[3].kana}
-                {words[4].kana}
-            </div>
+                </div>
 
-            <div className="answers">
-                {options[0].word}
-                {options[1].word}
-                {options[2].word}
-                {options[3].word}
-                {options[4].word}
+                <div className="answers pair-match">
+                    {options.map((e)=> {return <p>{e.word}</p>})}
+                </div>
             </div>
 
 
