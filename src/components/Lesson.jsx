@@ -15,7 +15,7 @@ const API_KEY = 'http://localhost:3000'
 
 function Lesson(props) {
 
-    const [title, useTitle] = useState('')
+    const [part, usePart] = useState('')
     const [vocab, useVocab] = useState([])
     const [data, useData] = useState({})
     const [loading, useLoading] = useState(false)
@@ -41,7 +41,7 @@ function Lesson(props) {
             .then((res) => {
                 console.log(res)
                 useData(res.data)
-                useTitle(res.data.title)
+                usePart(res.data.part)
                 useVocab(res.data.vocab)
                 useLoading(false)
             })
@@ -99,7 +99,7 @@ function Lesson(props) {
 
             </nav>
 
-            {title.toUpperCase()}
+            {part}
 
             <div className="cards">
                 {
