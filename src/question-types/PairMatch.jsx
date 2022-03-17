@@ -26,15 +26,10 @@ function PairMatch(props) {
         // console.log('******',props)
     }, [])
 
-    // useEffect(()=>{
-    //     props.sendResult(result)
-    // },[result])
-
     useEffect(()=>{
         if (words.length > 0){
             checkGameState()      
         }
-
     },[selection])
 
     function randomise(input){
