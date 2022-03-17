@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import KanaMatch from '../question-types/KanaMatch'
 import PictureMatch from '../question-types/PictureMatch'
+import PairMatch from '../question-types/PairMatch'
+import NoEngMatch from '../question-types/NoEngMatch'
 
 
 
@@ -19,15 +21,18 @@ function Lesson(props) {
     const [loading, useLoading] = useState(false)
     const [progress, useProgress] = useState(0)
     const [questions, useQuestions] = useState(0)
-    const [questionOrder, useQuestionOrder] = useState(0)
+    const [questionOrder, useQuestionOrder] = useState([])
+    const [progressedOrder, useProgressedOrder] = useState([])
     const { lesson } = useParams()
 
 
     useEffect(()=>{
-       
         getModule()
+    }, [])
 
-    }, data)
+    useEffect(()=>{
+        getGameData()
+    }, [vocab])
 
     async function getModule(){
         console.log('Getting module!')
@@ -43,11 +48,13 @@ function Lesson(props) {
             .catch((err) => {
                 console.log('error fetching data:', err)
             })
+            
+        // getGameData()
     }
 
-    function next(){
-        console.log("progress:", progress)
-        useProgress(progress+1)
+    function getGameData(){
+        // console.log("progress:", progress)
+        // useProgress(progress+1)
 
         function randomise(input){
             return input.sort((a,b) => 0.5 - Math.random())
@@ -58,14 +65,30 @@ function Lesson(props) {
         useQuestions(shuffle)
 
 
-        let qArr = Array(shuffle.length).fill().map((e, index) => index + 1)
+        // let qArr = Array(shuffle.length).fill().map((e, index) => index + 1)
+        let qArr = Array(4).fill().map((e, index) => index + 1)
 
         let order = randomise(qArr)
         console.log("*******CARD ORDER ARR********", order )
-        useQuestionOrder(shuffle)
+        useQuestionOrder(order)
+        // let secondOrder = order.shuffle()
+        let copy = [...order, ...randomise(order)]
+        useProgressedOrder(copy)
     }
 
-
+    function next(){
+        if (progressedOrder.length>0){
+            const chosenGame = progressedOrder.shift()
+            console.log('PROGRESSING GAME !!!! ', chosenGame)
+            useProgress(chosenGame)
+            useProgressedOrder(progressedOrder)
+        } else {
+            console.log(`you've progressed through the array!!`, questionOrder)
+        }
+    }
+    function randomNum(){
+        return Math.floor(Math.random(4))
+    }
 
     return (
         <div className="lesson-plan">
@@ -73,33 +96,41 @@ function Lesson(props) {
                 <h1 className="title test-elem">
                     TSURULINGO
                 </h1>
-            </nav>
 
+            </nav>
 
             {title.toUpperCase()}
 
             <div className="cards">
-            {
-                loading
-                ?
-                <p>loading...</p>
-                :
-                    
-                    progress < 1
+                {
+                    loading
                     ?
-                    <div>
+                    <p>loading...</p>
+                    :
+                        
+                        progress == 0
+                        ?
+                            <div>
 
-                        {/* LESSON INTRO GOES HERE */}
-                        <h1>LESSON BRIEF</h1>
-                    </div>
-                    :
-                    progress < 2
-                    ?
-                        <KanaMatch vocab={vocab}/>
-                    :
-                        <PictureMatch />
-            }
-                    </div>
+                                {/* LESSON INTRO GOES HERE */}
+                                <h1>LESSON BRIEF</h1>
+                            </div>
+                        :
+                        progress == 1
+                        ?
+                            <KanaMatch vocab={vocab}/>
+                        :
+                        progress == 2
+                        ?
+                            <PictureMatch vocab={vocab}/>
+                        :
+                        progress == 3 
+                        ?
+                            <PairMatch vocab={vocab}/>
+                        :
+                            <NoEngMatch vocab={vocab}/> // DON'T RENDER THIS FOR THE HIRAGANA ONLY ONES, ONLY FOR VOCABULARY!!!
+                }
+            </div>
 
 <           div className="user-controls">
                         <button onClick={next}>Next</button>    
