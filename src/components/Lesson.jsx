@@ -83,6 +83,7 @@ function Lesson(props) {
         useStarted(true)
         if (strikes === 2){
             console.log('OH NO, YOU FAILED THIS LESSON')
+            confirm('OH NO, YOU FAILED THIS LESSON')
         } else {
             if (progressedOrder.length>0){
                 const chosenGame = progressedOrder.shift()
@@ -90,6 +91,7 @@ function Lesson(props) {
                 useProgress(chosenGame)
                 useProgressedOrder(progressedOrder)
             } else {
+                confirm("Good job! you completed this lesson!")
                 // console.log(`you've progressed through the array!!`, questionOrder)
             }
             useNextStage(false)
@@ -134,28 +136,33 @@ function Lesson(props) {
                     ?
                     <p>loading...</p>
                     :
-                        
-                        progress == 0
-                        ?
-                            <div>
+                        <div>
+                        {progress === 0 &&<div><h1>LESSON BRIEF</h1></div>}
+                        {progress === 1 && <KanaMatch vocab={vocab} sendResult={questionResults}/>}
+                        {progress === 2 && <PictureMatch vocab={vocab} sendResult={questionResults}/>}
+                        {progress === 3 && <PairMatch vocab={vocab} sendResult={questionResults}/>}
+                        {progress === 4 && <NoEngMatch vocab={vocab} sendResult={questionResults}/>}
 
-                                {/* LESSON INTRO GOES HERE */}
-                                <h1>LESSON BRIEF</h1>
-                            </div>
-                        :
-                        progress == 1
-                        ?
-                            <KanaMatch vocab={vocab} sendResult={questionResults}/>
-                        :
-                        progress == 2
-                        ?
-                            <PictureMatch vocab={vocab} sendResult={questionResults}/>
-                        :
-                        progress == 3 
-                        ?
-                            <PairMatch vocab={vocab} sendResult={questionResults}/>
-                        :
-                            <NoEngMatch vocab={vocab} sendResult={questionResults}/> // DON'T RENDER THIS FOR THE HIRAGANA ONLY ONES, ONLY FOR VOCABULARY!!!
+                        </div>
+                        // progress == 0
+                        // ?
+                        //     <div>
+                        //         <h1>LESSON BRIEF</h1>
+                        //     </div>
+                        // :
+                        // progress == 1
+                        // ?
+                        //     <KanaMatch vocab={vocab} sendResult={questionResults}/>
+                        // :
+                        // progress == 2
+                        // ?
+                        //     <PictureMatch vocab={vocab} sendResult={questionResults}/>
+                        // :
+                        // progress == 3 
+                        // ?
+                        //     <PairMatch vocab={vocab} sendResult={questionResults}/>
+                        // :
+                        //     <NoEngMatch vocab={vocab} sendResult={questionResults}/> // DON'T RENDER THIS FOR THE HIRAGANA ONLY ONES, ONLY FOR VOCABULARY!!!
                 }
             </div>
 
