@@ -277,3 +277,7 @@ body{
 .control-incorrect{
   background-color: red;
 }
+
+.hide{
+  display:none;
+}

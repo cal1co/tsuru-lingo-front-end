@@ -16,6 +16,7 @@ const API_KEY = 'http://localhost:3000'
 function Lesson(props) {
 
     const [part, usePart] = useState('')
+    const [started, useStarted] = useState(false)
     const [vocab, useVocab] = useState([])
     const [data, useData] = useState({})
     const [loading, useLoading] = useState(false)
@@ -79,6 +80,7 @@ function Lesson(props) {
     }
 
     function next(){
+        useStarted(true)
         if (strikes === 2){
             console.log('OH NO, YOU FAILED THIS LESSON')
         } else {
@@ -94,7 +96,6 @@ function Lesson(props) {
             if (!result){
                 console.log(strikes)
                 useStrikes(strikes + 1)
-                
             }
         }
         
@@ -158,28 +159,10 @@ function Lesson(props) {
                 }
             </div>
 
-<           div className={(!nextStage ? '' : (result ? 'control-correct' : 'control-incorrect')) + " user-controls"}>
-                        <button onClick={next}>Next</button>    
+            <div className={(!nextStage ? '' : (result ? 'control-correct' : 'control-incorrect')) + " user-controls"}>
+                <button className={started ? (!nextStage ? 'hide' : 'display') : ''} onClick={next}>Next</button>    
             </div>
-            {/* {
-            vocab.length>1
-            ?
-            vocab.map((e, index) => {
-                return(
-                    <div className="vocab" key={index}>
-                        <p>{e.kana}: {e.word}</p>
-                        <img src={e.image}/>
-                    </div>
-                    )
-                })
-            :
-            <p></p>
-            } */}
-            
 
-
-
-            {/* <button onClick={getModule}> Get Module!</button> */}
         </div>
     );
 }
