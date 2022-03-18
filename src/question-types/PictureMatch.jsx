@@ -64,7 +64,8 @@ function PictureMatch(props) {
             ?
             <div className="kana-match-grid">
                 {/* <img src={props.vocab[0].word} /> */}
-                <h1>{props.vocab[0].word}</h1>
+                {/* <h1>{props.vocab[0].word}</h1> */}
+                <h1>{props.vocab[0].kana}</h1>
                 <div className="kana-options">
 
                     <div className="option" onClick={()=>select(0)}>

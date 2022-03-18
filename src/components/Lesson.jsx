@@ -81,7 +81,7 @@ function Lesson(props) {
 
     function next(){
         useStarted(true)
-        if (strikes === 3){
+        if (strikes === 2){
             console.log('OH NO, YOU FAILED THIS LESSON')
             confirm('OH NO, YOU FAILED THIS LESSON')
         } else {
