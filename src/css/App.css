@@ -210,6 +210,9 @@ body{
   /* transform:translateY(-50%); */
   transform:translate(-50%, -50%);
 }
+.kana-match-grid > img {
+  width:75px;
+}
 /* :is */
 .option{
   position:static;
@@ -230,7 +233,6 @@ body{
   margin-top:3px;
 }
 
-
 .option-val > * {
   display:flex;
   align-items:center;
@@ -240,10 +242,13 @@ body{
   border:1px solid var(--lingo-1);
   border-radius:20px;
   padding:5px;
-  width:20px;
+  width:fit-content;
   height:20px;
 }
 .option-val > img {
+  position:relative;
+  width:20px;
+  /* margin-top:10px; */
   top:50%;
 }
 .pair-match{
