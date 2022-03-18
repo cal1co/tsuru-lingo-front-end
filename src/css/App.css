@@ -235,6 +235,7 @@ body{
 
 .option-val > * {
   display:flex;
+  position:relative;
   align-items:center;
   justify-content:center;
   margin:0px;
@@ -246,11 +247,25 @@ body{
   height:20px;
 }
 .option-val > img {
-  position:relative;
+  margin:0;
   width:20px;
   /* margin-top:10px; */
-  top:50%;
 }
+
+.option-val{
+  position:relative;
+  top:50%;
+  transform: translateY(-80%);
+  margin-left:7px;
+}
+/* .option > * {
+  position:relative;
+  top:50%;
+} */
+
+
+
+
 .pair-match{
   max-height:25vh;
   display:grid;
@@ -298,4 +313,10 @@ body{
 
 .hide{
   display:none;
+}
+
+.pair-match > * {
+  width:fit-content;
+  border-radius:20px;
+
 }
