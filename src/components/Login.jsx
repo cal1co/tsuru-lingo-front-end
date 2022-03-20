@@ -12,12 +12,6 @@ function Login() {
     const [mail, setMail] = useState('')
     const [pass, setPass] = useState('')
 
-    // function callLogin() {
-    //     console.log("HIHI")
-    //     login(mail, pass)
-    //     console.log(mail, pass)
-    // }
-
     let navigate = useNavigate();
 
     function login(e) {
@@ -38,10 +32,10 @@ function Login() {
     }
 
         return (
-            <div>
+            <div className="modal">
                 <h1>LOGIN PAGE [RENDERED IN THE LANDING PAGE??]</h1>
             
-            <form>
+            <form className="modal">
                 <input type="text" onChange={e => setMail(e.target.value)} placeholder="e-mail"/>
                 <input type="text" onChange={e => setPass(e.target.value)} placeholder="password"/>
                 <button onClick={login}>login</button>
