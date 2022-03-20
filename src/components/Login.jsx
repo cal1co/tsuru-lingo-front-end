@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { useState } from 'react' 
+import { useState, useReducer } from 'react' 
 
 import { useNavigate } from "react-router-dom";
 
 const API_KEY = 'http://localhost:3000'
+
+
+// function reducer(state, action){
+
+//     switch(action.type){
+//         case 'setUser':
+//             return state = 
+//     }
+
+
+
+// }
 
 
 function Login() {
@@ -13,6 +25,9 @@ function Login() {
     const [pass, setPass] = useState('')
 
     let navigate = useNavigate();
+
+    const [currentUser, dispatch] = useReducer(reducer, {}) 
+
 
     function login(e) {
         e.preventDefault()
@@ -23,14 +38,20 @@ function Login() {
         })
         .then((res) => {
             console.log("LOGIN SUCCESSFUL", res)
+            dispatch({type:'setUser'})
+
             navigate('/learn/jp')
+            setUser(res.data.token)
             // this.setState({ redirect: "/learn/jp" });
         })
         .catch((err) => {
             console.log("Error logging in:", err)
         })
     }
-
+    function setUser(token){
+        localStorage.setItem("jwt", token)
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    }
         return (
             <div className="modal">
                 <h1>LOGIN PAGE [RENDERED IN THE LANDING PAGE??]</h1>

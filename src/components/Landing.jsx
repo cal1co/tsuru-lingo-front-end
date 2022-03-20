@@ -17,13 +17,13 @@ function Landing() {
             modal.showModal();
         });
 
-        body.addEventListener("click", (e) => {
-            if (!e.target.classList.contains('modal')){
+        // body.addEventListener("click", (e) => {
+        //     if (!e.target.classList.contains('modal')){
 
-            }
-            // modal.close();
-            console.log(e.target.classList)
-        })
+        //     }
+        //     // modal.close();
+        //     console.log(e.target.classList)
+        // })
         // modal.setCanceledOnTouchOutside
 
     }, [])

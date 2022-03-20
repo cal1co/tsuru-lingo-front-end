@@ -48,7 +48,7 @@ function StudyRoom() {
 
     return (
         <div>
-            <h1>PARENT COMPONENT FOR LESSON AND LESSON BRIEF</h1>
+
             <button onClick={dict}>Dict</button>
             {/* <button onClick={getLang}>get lang</button> */}
 
