@@ -81,7 +81,7 @@ function StudyRoom() {
                 <Button variant="secondary" onClick={dict}>Dictionary</Button>
                 <Button variant="secondary" >Forums</Button>
                 <Button variant="secondary" >Profile</Button>
-                <DropdownButton
+                {/* <DropdownButton
                 id="dropdown-button-dark-example2"
                 variant="secondary"
                 menuVariant="dark"
@@ -95,7 +95,7 @@ function StudyRoom() {
                     <Dropdown.Item href="#/action-3">Katakana</Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Item href="#/action-4">Kanji</Dropdown.Item>
-                </DropdownButton>
+                </DropdownButton> */}
             </div>
             {dictionary ? <Dictionary/> :
             <div className="modules" key="display">

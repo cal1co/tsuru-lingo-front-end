@@ -488,9 +488,8 @@ body{
   color:gray;
   background:none;
 }
-/* .nav-prog > button:hover{
-  color:var(--text-color);
-  outline:2px solid var(--theme-two);
-  background:shine 2s linear infinite;
-  animation: shine 2s linear infinite;
-} */
+.nav-prog > button:hover{
+  color:rgb(51, 50, 50);
+  background:none;
+
+}
