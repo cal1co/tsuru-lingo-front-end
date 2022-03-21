@@ -238,11 +238,15 @@ function Landing() {
                     <h3 className="app-tag">Learn anytime anywhere</h3>
                     <h5 className="app-exp">Lorem ipsum dolor sit, <u>amet consectetur adipisicing</u> elit. Aperiam, repellat maiores, dicta saepe iste ex nemo ea, quia minima vitae reprehenderit <u>cumque dolorem atque! Culpa, dignissimos</u>. Voluptatum a deserunt odit?</h5>
                     <img src={peepBike} className="peep-bike" />
-                
                 </div>
                 <div className="app-line"></div>
 
-
+                <div className="added-info">
+                    <h3>More info</h3>
+                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolore eligendi similique perspiciatis minima voluptas esse eos libero fugit corrupti deserunt ex itaque doloremque ipsa sint eius error, provident ullam.</h5>
+                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolore eligendi similique perspiciatis minima voluptas esse eos libero fugit corrupti deserunt ex itaque doloremque ipsa sint eius error, provident ullam.</h5>
+                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolore eligendi similique perspiciatis minima voluptas esse eos libero fugit corrupti deserunt ex itaque doloremque ipsa sint eius error, provident ullam.</h5>
+                </div>
                 <footer>
                     misc info
                 </footer>

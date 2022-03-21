@@ -745,5 +745,22 @@ u{
 .peep-bike{
   transform:scaleX(-1);
   border:none;
-  width:450px;
+  position:relative;
+  top:50px;
+  width:400px;
+}
+footer{
+  position:relative;
+  top:90vh;
+  left:0vw;
+}
+.added-info{
+  width:90vw;
+  position:relative;
+  left:-350px;
+  top:-190px;
+  text-align:left;
+}
+.added-info > h5{
+  margin-bottom:30px;
 }
