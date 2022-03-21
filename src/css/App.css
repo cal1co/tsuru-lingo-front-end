@@ -259,6 +259,7 @@ body{
 .option:active{
   border-bottom:2px solid var(--lingo-1);
   margin-top:3px;
+  margin-bottom:2px;
 }
 
 .option-val > * {
@@ -276,7 +277,8 @@ body{
 }
 .option-val > img {
   margin:0;
-  width:20px;
+  max-width:35px;
+  height:35px;
 
 }
 
@@ -328,6 +330,7 @@ body{
 }
 
 .control-correct{
+  /* background-color: var(--lingo-1); */
   background-color: var(--lingo-1);
 }
 .control-incorrect{

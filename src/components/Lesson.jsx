@@ -2,7 +2,10 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react' 
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
+import ProgressBar from 'react-bootstrap/ProgressBar'
+import css from '../css/App.css'
+
 import KanaMatch from '../question-types/KanaMatch'
 import PictureMatch from '../question-types/PictureMatch'
 import PairMatch from '../question-types/PairMatch'
@@ -32,6 +35,8 @@ function Lesson(props) {
     const [remaining, useRemaining] = useState(0)
     const [count, useCount] = useState(0)
     const { lesson } = useParams()
+
+    let navigate = useNavigate();
 
     useEffect(()=>{
         getModule()
@@ -128,7 +133,9 @@ function Lesson(props) {
             useNextStage(true)
         }
     }
-
+    function goHome(){
+        navigate('/learn/jp')
+    }
 
     // if (passFail){
        
@@ -155,12 +162,13 @@ function Lesson(props) {
                     :
                         <div>
                         {progress === 0 &&<div><h1>LESSON BRIEF</h1></div>}
+                        {progress !== 0 && <div><button onClick={goHome}>X</button><ProgressBar variant="info" now={(count-1)/8*100} />{remaining}</div>}
                         {progress === 1 && <KanaMatch vocab={vocab} sendResult={questionResults}/>}
                         {progress === 2 && <PictureMatch vocab={vocab} sendResult={questionResults}/>}
                         {progress === 3 && <PairMatch vocab={vocab} sendResult={questionResults}/>}
                         {progress === 4 && <NoEngMatch vocab={vocab} sendResult={questionResults}/>}
-                        {progress !== 0 && remaining}
                         </div>
+                        
                         // progress == 0
                         // ?
                         //     <div>
