@@ -26,7 +26,7 @@ function Login() {
 
     let navigate = useNavigate();
 
-    const [currentUser, dispatch] = useReducer(reducer, {}) 
+    // const [currentUser, dispatch] = useReducer(reducer, {}) 
 
 
     function login(e) {
@@ -38,7 +38,7 @@ function Login() {
         })
         .then((res) => {
             console.log("LOGIN SUCCESSFUL", res)
-            dispatch({type:'setUser'})
+            // dispatch({type:'setUser'})
 
             navigate('/learn/jp')
             setUser(res.data.token)

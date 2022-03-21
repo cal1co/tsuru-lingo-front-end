@@ -27,10 +27,13 @@ function Lesson(props) {
     const [strikes, useStrikes] = useState(0)
     const [result, useResult] = useState([])
     const [nextStage, useNextStage] = useState(false)
+    const [passFail, usePassFail] = useState(false)
+    const [passCalled, usePassCalled] = useState(false)
     const { lesson } = useParams()
 
     useEffect(()=>{
         getModule()
+        console.log('lesson', lesson)
     }, [])
 
     useEffect(()=>{
@@ -83,6 +86,7 @@ function Lesson(props) {
         useStarted(true)
         if (strikes === 2){
             console.log('OH NO, YOU FAILED THIS LESSON')
+            usePassFail(false)
             confirm('OH NO, YOU FAILED THIS LESSON')
         } else {
             if (progressedOrder.length>0){
@@ -91,6 +95,8 @@ function Lesson(props) {
                 useProgress(chosenGame)
                 useProgressedOrder(progressedOrder)
             } else {
+                usePassFail(true)
+                axios.post(`${API_KEY}/${lesson}/pass`, {token:localStorage.getItem("jwt"), lesson: data._id})
                 confirm("Good job! you completed this lesson!")
                 // console.log(`you've progressed through the array!!`, questionOrder)
             }
@@ -107,6 +113,7 @@ function Lesson(props) {
         return Math.floor(Math.random(4))
     }
 
+    
     function questionResults(outcome){
         console.log('THIS IS BEING CALLED FROM THE CHILD!!!', outcome)
         useResult(outcome)
@@ -116,6 +123,11 @@ function Lesson(props) {
             useNextStage(true)
         }
     }
+
+
+    // if (passFail){
+       
+    // }
 
 
 

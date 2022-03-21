@@ -74,7 +74,7 @@ function Dictionary() {
                 let defArr = result.senses
                 console.log(defArr)
                 return(
-                    <div className="dict-results">
+                    <div className="dict-results" key={index} id={index}>
                         <h1 key="word">{result.slug}</h1>
                         <h3>{defArr.map((definition, index)=>{
                             return(
