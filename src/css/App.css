@@ -643,7 +643,7 @@ body{
   width:fit-content;
   left:50%;
   transform: translateX(-50%);
-  top:10%;
+  top:15%;
   font-size:5rem;
   border-radius:20px;
   text-align:center;
@@ -656,12 +656,12 @@ body{
     outline: none;
     border: none;
     /* width: 90px; */
-    height: 10vh;
-    width:70vw;
+    height: 7vh;
+    width:30vw;
     background: transparent;
     color: white;
     position: relative;
-    font-size: 2em;
+    font-size: 1.5em;
     /* border: 1px solid red; */
     border-radius:30px;
     padding:0px;
@@ -688,4 +688,35 @@ body{
 }
 .home:hover{
   color:var(--lingo-1dark)
+}
+.about-tag{
+  position:relative;
+  top:30px;
+  left:25vw;
+  /* transform:translateX(-50%) */
+}
+.about-peep{
+  border:0;
+  height:40vh;
+  position:relative;
+  left:15%;
+  top:30%;
+}
+.about-exp{
+  position:relative;
+  top:50px;
+  left:27vw;
+  width:50vw;
+}
+u{
+  cursor:pointer;
+  font-weight:600;
+  color:gray
+}
+.about-line{
+  border:1px solid gray;
+  position:relative;
+  top:-280px;
+  width:75vw;
+  left:20%;
 }

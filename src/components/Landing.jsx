@@ -6,6 +6,7 @@ import Login from './Login'
 import { useEffect, useState } from 'react' 
 import peep from './peep-4.svg'
 import peep2 from './peep-6.svg'
+import peepSitting from './peep-sitting-2.svg'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
@@ -224,10 +225,13 @@ function Landing() {
                 </div>
 
                 <div className="about">
-                    <h2>ABOUT THE APP</h2>
+                    <h3 className="about-tag">The best way to learn and memorise a language</h3>
+                    <h5 className="about-exp">Have fun whilst learning a language: progress through quick and engaging lesson modules that are <u>proven to work.</u> Keep track of your progress and <u>compare results</u> with your friends and family!</h5>
                     
-                </div>
+                    <img src={peepSitting} className="about-peep" />
 
+                </div>
+                <div className="about-line"></div>
                 <footer>
                     misc info
 
