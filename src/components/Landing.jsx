@@ -232,9 +232,18 @@ function Landing() {
 
                 </div>
                 <div className="about-line"></div>
+                    
+                <div className="app-benefits">
+                    <h3 className="app-tag">Learn anytime anywhere</h3>
+                    <h5 className="app-exp">Lorem ipsum dolor sit, <u>amet consectetur adipisicing</u> elit. Aperiam, repellat maiores, dicta saepe iste ex nemo ea, quia minima vitae reprehenderit <u>cumque dolorem atque! Culpa, dignissimos</u>. Voluptatum a deserunt odit?</h5>
+                
+                
+                </div>
+                <div className="app-line"></div>
+
+
                 <footer>
                     misc info
-
                 </footer>
             </div>
         );

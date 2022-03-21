@@ -699,8 +699,8 @@ body{
   border:0;
   height:40vh;
   position:relative;
-  left:15%;
-  top:30%;
+  left:13%;
+  top:25%;
 }
 .about-exp{
   position:relative;
@@ -719,4 +719,26 @@ u{
   top:-280px;
   width:75vw;
   left:20%;
+}
+.app-benefits{
+  position:relative;
+  top:-250px;
+}
+.app-tag{
+  position:relative;
+  left:25%;
+}
+.app-exp{
+  position:relative;
+  left:27%;
+  text-align:left;
+  width:55vw;
+  /* float:left; */
+}
+.app-line{
+  border:1px solid gray;
+  position:relative;
+  top:-220px;
+  width:70vw;
+  left:25%;
 }
