@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import Dictionary from './Dictionary'
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react' 
+import ProgressBar from 'react-bootstrap/ProgressBar'
+import Dropdown from 'react-bootstrap/Dropdown'
+import Button from 'react-bootstrap/Button'
+import DropdownButton from 'react-bootstrap/DropdownButton'
 import axios from 'axios';
 
 const API_KEY = 'http://localhost:3000'
@@ -69,15 +73,30 @@ function StudyRoom() {
     }
 
 
-
-
-
     return (
         <div>
+            <div className="nav-prog">
 
-            <button onClick={dict}>Dictionary</button>
-            <button onClick={lesson}>My Lessons</button>
-            {/* {dictionary && <Dictionary/>} */}
+                <Button variant="secondary" onClick={lesson}>My Lessons</Button>
+                <Button variant="secondary" onClick={dict}>Dictionary</Button>
+                <Button variant="secondary" >Forums</Button>
+                <Button variant="secondary" >Profile</Button>
+                <DropdownButton
+                id="dropdown-button-dark-example2"
+                variant="secondary"
+                menuVariant="dark"
+                title="My Decks"
+                className="mt-2"
+                >
+                    <Dropdown.Item href="#/action-1" active>
+                    Vocab
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Hiragana</Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">Katakana</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item href="#/action-4">Kanji</Dropdown.Item>
+                </DropdownButton>
+            </div>
             {dictionary ? <Dictionary/> :
             <div className="modules" key="display">
             {
@@ -86,6 +105,12 @@ function StudyRoom() {
                 modules.map((e, index) => {
                     return(
                         <div>
+                            <div className="home-info">
+
+                                <h3>Lesson Progress: {user.passed.length}/16</h3>
+                                <ProgressBar className="home-progress" variant="warning" now={(user.passed.length)/16*100} />
+
+                            </div>
                             <h1>My Lessons:</h1>
                             <div className="module-title" key={index} onClick={() => goToLesson(index)}>
                                 <h2 key={index}>

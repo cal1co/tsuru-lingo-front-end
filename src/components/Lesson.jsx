@@ -162,7 +162,7 @@ function Lesson(props) {
                     :
                         <div>
                         {progress === 0 &&<div><h1>LESSON BRIEF</h1></div>}
-                        {progress !== 0 && <div><button onClick={goHome}>X</button><ProgressBar variant="info" now={(count-1)/8*100} />{remaining}</div>}
+                        {progress !== 0 && <div className="progress-info"><button className="close-lesson" onClick={goHome}>X</button><ProgressBar variant="info" now={(count-1)/8*100} /><h4>{remaining}</h4></div>}
                         {progress === 1 && <KanaMatch vocab={vocab} sendResult={questionResults}/>}
                         {progress === 2 && <PictureMatch vocab={vocab} sendResult={questionResults}/>}
                         {progress === 3 && <PairMatch vocab={vocab} sendResult={questionResults}/>}

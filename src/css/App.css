@@ -234,11 +234,13 @@ body{
   overflow:hidden;
   height:fit-content;
   top:50%;
-  left:50%;
+  left:60%;
   transform:translate(-50%, -50%);
+  float:left;
 }
 .kana-match-grid > img {
   width:100px;
+  /* float:left; */
 }
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 /* :is */
@@ -252,7 +254,7 @@ body{
   border-bottom:5px solid var(--lingo-1);
   border-radius:20px;
   margin-bottom:5px;
-  width:40vw;
+  width:30vw;
   height:55px;
   cursor:pointer;
 }
@@ -273,7 +275,7 @@ body{
   border-radius:20px;
   padding:5px;
   width:fit-content;
-  height:20px;
+  height:35px;
 }
 .option-val > img {
   margin:0;
@@ -293,6 +295,7 @@ body{
 
 .pair-match{
   max-height:25vh;
+  width:fit-content;
   display:grid;
   grid-template-rows: repeat(5,1fr);
   gap:10px;
@@ -310,7 +313,7 @@ body{
   margin-left:7px;
   border:1px solid var(--lingo-1);
   border-radius:30%;
-  padding:5px;
+  padding:12px;
   width:40px;
   height:40px;
 }
@@ -327,6 +330,12 @@ body{
 }
 .questions > *, .answers >*{
   cursor:pointer;
+  border-radius:0px;
+}
+.questions{
+  position:relative;
+  left:65%;
+  /* transform:translateX(-50%); */
 }
 
 .control-correct{
@@ -435,3 +444,53 @@ body{
   margin:0;
   z-index:999
 }
+.progress{
+  max-width:80vw;
+  min-width:80vw;
+}
+.progress-info{
+  display:inline-block;
+  width:90vw;
+}
+.close-lesson{
+  background:none;
+  border:0
+}
+.home-info{
+  position:relative;
+  display:inline-block;
+  width:100vw;
+  top:80%;
+  left:50%;
+  transform:translateX(-40%)
+  /* margin-top:80vw; */
+}
+.home-info > .home-progress{
+  position:relative;
+  top:30%;
+}
+.nav-prog  >h3{
+  position:relative;
+  top:0%;
+  width:300px;
+
+}
+.nav-prog{
+  margin-top:10px;
+  margin-bottom:10px;
+  border-bottom:1px solid lightgray;
+  height:5.5vh;
+  
+}
+.nav-prog > button{
+  margin-left:20px;
+  border:0;
+  color:gray;
+  background:none;
+}
+/* .nav-prog > button:hover{
+  color:var(--text-color);
+  outline:2px solid var(--theme-two);
+  background:shine 2s linear infinite;
+  animation: shine 2s linear infinite;
+} */
