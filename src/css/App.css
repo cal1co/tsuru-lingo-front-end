@@ -99,6 +99,7 @@ ul > * {
 }
 
 .exist-acc{
+  margin-left:20px;
   min-width:250px;
   color:white;
   background-color:var(--lingo-1);
@@ -110,7 +111,7 @@ ul > * {
   background-color:var(--lingo-1mid)
 }
 .exist-acc:active{
-  margin-top:13px;
+  margin-top:3px;
   border-bottom:2px solid var(--lingo-1dark);
 }
 
@@ -123,18 +124,30 @@ ul > * {
   background-color:var(--lingo-2mid);
 }
 .new-acc:active{
-  margin-top:13px;
+  margin-top:3px;
   border-bottom:2px solid var(--lingo-2dark)
 }
 
 .signup{
-  height:40vh;
-  display: flex;
+  /* display: flex; */
+  position:relative;
+  top:40%;
+  left:60%;
+  min-height:10px;
+ 
 }
-.signup > * {
+.signup > div > * {
+  
+  margin:0;
+  margin-bottom:10px;
+  margin-left:15px;
   max-height: 50px;
 }
-
+.signup-buttons{
+  max-width: 250px;
+  display:flex;
+  justify-content: center;
+}
 .lesson-plan{
   position:relative;
   top:0px;
@@ -359,4 +372,56 @@ body{
 }
 .about > * {
   margin: 0;
+}
+.peep{
+  position:relative;
+  height:0;
+  width:0;
+  border:0;
+  min-height:250px;
+  width:clamp(100px, 20vw, 500px);
+  z-index:999;
+  /* top:0%; */
+  left:50%;
+  /* float:left; */
+}
+.listener{
+  left:0%;
+  top:0%;
+  transform:scaleX(-1)
+}
+.peeps{
+  position:relative;
+  top:0%;
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  width:fit-content;
+}
+.peeps > * {
+  animation: shine 5s linear infinite;
+  fill:shine;
+}
+.speech{
+  /* display:hidden; */
+  position:relative;
+  width:clamp(30px, 10vw, 100px);
+  border:0;
+  top:30%;
+  left:22.5vw;
+  padding:0;
+  z-index:99999;
+}
+.container{
+  display:inline-flex;
+  position:relative;
+  top:25%;
+}
+.container > h3{
+  width:clamp(30px, 10vw, 100px);
+  color:var(--text-color);
+  font-size:0.8rem;
+  position:relative;
+  top:-2vh;
+  left:8.5vw;
+  margin:0;
 }
