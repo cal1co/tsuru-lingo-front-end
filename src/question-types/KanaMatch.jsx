@@ -61,8 +61,7 @@ function KanaMatch(props) {
     return (
         <div>
 
-            <button onClick={() => console.log(words)}>test props</button>
-            <h3>THIS IS KANA MATCH</h3>
+            <h3 className="game-instructions">Match the Hiragana to the english notation</h3>
             {words.length>0
             ?
             <div className="kana-match-grid">

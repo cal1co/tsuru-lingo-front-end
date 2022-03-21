@@ -9,6 +9,8 @@ import KanaMatch from '../question-types/KanaMatch'
 import PictureMatch from '../question-types/PictureMatch'
 import PairMatch from '../question-types/PairMatch'
 import NoEngMatch from '../question-types/NoEngMatch'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 
 
@@ -33,7 +35,12 @@ function CompleteLesson(props) {
     const [passCalled, usePassCalled] = useState(false)
     const [remaining, useRemaining] = useState(0)
     const [count, useCount] = useState(0)
+    const [show, useShow] = useState(false)
     const { lesson } = useParams()
+
+    const handleClose = () => useShow(false);
+    const handleShow = () => useShow(true);
+
 
     let navigate = useNavigate();
 
@@ -105,8 +112,7 @@ function CompleteLesson(props) {
                 useProgressedOrder(progressedOrder)
             } else {
                 usePassFail(true)
-                axios.post(`${API_KEY}/${lesson}/pass`, {token:localStorage.getItem("jwt"), lesson: data._id})
-                confirm("Good job! you completed this lesson!")
+                handleShow()
                 // console.log(`you've progressed through the array!!`, questionOrder)
             }
             useNextStage(false)
@@ -188,6 +194,17 @@ function CompleteLesson(props) {
                         // :
                         //     <NoEngMatch vocab={vocab} sendResult={questionResults}/> // DON'T RENDER THIS FOR THE HIRAGANA ONLY ONES, ONLY FOR VOCABULARY!!!
                 }
+            <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+                <Modal.Header closeButton>
+                <Modal.Title>Congratulations!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                You have passed lesson {lesson}!
+                </Modal.Body>
+                <Modal.Footer>
+                <Button onClick={goHome}variant="primary">Back To lessons</Button>
+                </Modal.Footer>
+            </Modal>
             </div>
 
             <div className={(!nextStage ? '' : (result ? 'control-correct' : 'control-incorrect')) + " user-controls"}>

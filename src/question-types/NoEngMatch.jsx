@@ -58,8 +58,7 @@ function WordMatch(props) {
     return (
         <div>
 
-            <button onClick={() => console.log(words)}>test props</button>
-            <h3>THIS IS NO ENG MATCH - no english</h3>
+            <h3 className="game-instructions">Match the Image to the Kana</h3>
             {words.length>0
             ?
             <div className="kana-match-grid">

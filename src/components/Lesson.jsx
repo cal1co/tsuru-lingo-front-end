@@ -10,7 +10,8 @@ import KanaMatch from '../question-types/KanaMatch'
 import PictureMatch from '../question-types/PictureMatch'
 import PairMatch from '../question-types/PairMatch'
 import NoEngMatch from '../question-types/NoEngMatch'
-
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 
 const API_KEY = 'http://localhost:3000'
@@ -34,9 +35,15 @@ function Lesson(props) {
     const [passCalled, usePassCalled] = useState(false)
     const [remaining, useRemaining] = useState(0)
     const [count, useCount] = useState(0)
+    const [show, useShow] = useState(false)
     const { lesson } = useParams()
 
+    const handleClose = () => useShow(false);
+    const handleShow = () => useShow(true);
+
+    
     let navigate = useNavigate();
+
 
     useEffect(()=>{
         getModule()
@@ -107,7 +114,7 @@ function Lesson(props) {
             } else {
                 usePassFail(true)
                 axios.post(`${API_KEY}/${lesson}/pass`, {token:localStorage.getItem("jwt"), lesson: data._id})
-                confirm("Good job! you completed this lesson!")
+                handleShow
                 // console.log(`you've progressed through the array!!`, questionOrder)
             }
             useNextStage(false)
@@ -169,28 +176,20 @@ function Lesson(props) {
                         {progress === 4 && <NoEngMatch vocab={vocab} sendResult={questionResults}/>}
                         </div>
                         
-                        // progress == 0
-                        // ?
-                        //     <div>
-                        //         <h1>LESSON BRIEF</h1>
-                        //     </div>
-                        // :
-                        // progress == 1
-                        // ?
-                        //     <KanaMatch vocab={vocab} sendResult={questionResults}/>
-                        // :
-                        // progress == 2
-                        // ?
-                        //     <PictureMatch vocab={vocab} sendResult={questionResults}/>
-                        // :
-                        // progress == 3 
-                        // ?
-                        //     <PairMatch vocab={vocab} sendResult={questionResults}/>
-                        // :
-                        //     <NoEngMatch vocab={vocab} sendResult={questionResults}/> // DON'T RENDER THIS FOR THE HIRAGANA ONLY ONES, ONLY FOR VOCABULARY!!!
+                        
                 }
             </div>
-
+            <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+                <Modal.Header closeButton>
+                <Modal.Title>Congratulations!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                You have passed lesson {lesson}!
+                </Modal.Body>
+                <Modal.Footer>
+                <Button onClick={goHome}variant="primary">Back To lessons</Button>
+                </Modal.Footer>
+            </Modal>
             <div className={(!nextStage ? '' : (result ? 'control-correct' : 'control-incorrect')) + " user-controls"}>
                 <button className={started ? (!nextStage ? 'hide' : 'display') : ''} onClick={next}>Next</button>    
             </div>

@@ -58,32 +58,32 @@ function PictureMatch(props) {
     return (
         <div>
 
-            <button onClick={() => console.log(words)}>test props</button>
-            <h3>THIS IS PICTURE MATCH</h3>
+
+            <h3 className="game-instructions">Match the Hiragana to the image</h3>
             {words.length>0
             ?
-            <div className="kana-match-grid">
+            <div className="img-match-grid">
                 {/* <img src={props.vocab[0].word} /> */}
                 {/* <h1>{props.vocab[0].word}</h1> */}
                 <h1>{props.vocab[0].kana}</h1>
-                <div className="kana-options">
+                <div className="image-options">
 
-                    <div className="option" onClick={()=>select(0)}>
-                        <div className="option-val">
+                    <div className="image-option" onClick={()=>select(0)}>
+                        <div className="option-img">
                             <img src={options[0].image} />
 
                             {/* <h3>{options[0].image}</h3> */}
                         </div>
                     </div>
-                    <div className="option" onClick={()=>select(1)}>
-                        <div className="option-val">
+                    <div className="image-option" onClick={()=>select(1)}>
+                        <div className="option-img">
                             <img src={options[1].image} />
 
                             {/* <h3>{options[1].image}</h3> */}
                         </div>
                     </div>
-                    <div className="option" onClick={()=>select(2)}>
-                        <div className="option-val">
+                    <div className="image-option" onClick={()=>select(2)}>
+                        <div className="option-img">
                             <img src={options[2].image} />
                             {/* <h3>{options[2].image}</h3> */}
                         </div>

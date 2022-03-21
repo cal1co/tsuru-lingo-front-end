@@ -97,7 +97,7 @@ function PairMatch(props) {
     
     return (
         <div>
-            <h1>This is pair match</h1>
+            <h3 className="game-instructions">Match the pairs</h3>
             <div className="kana-match-grid">
                 <div className="questions pair-match">
                     {
