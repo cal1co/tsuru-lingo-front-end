@@ -181,7 +181,7 @@ function Landing() {
                         </div>
                     </Modal.Footer>
                     </Modal>
-                    <h1 className="home">HOME PAGE - [insert pretty CSS here] nothing here except for welcome and login</h1>
+                    <button className="home butt">Learn Smarter Not Harder</button>
                     {/* <h1 className="home">HOME PAGE - [insert pretty CSS here] nothing here except for welcome and login</h1> */}
                     <div className="signup">
                         {/* <Link to="/"> */}

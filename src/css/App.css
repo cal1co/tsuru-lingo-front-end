@@ -60,6 +60,7 @@ ul > * {
   
   animation: shine 5s linear infinite;
   margin:0px;
+  z-index:999999;
 }
 .title:hover{
   /* animation: shine 2s linear infinite; */
@@ -131,7 +132,7 @@ ul > * {
 .signup{
   /* display: flex; */
   position:relative;
-  top:40%;
+  top:35%;
   left:60%;
   min-height:10px;
  
@@ -422,12 +423,16 @@ body{
   top:0%;
   transform:scaleX(-1)
 }
+.peep{
+  min-height:300px;
+}
 .peeps{
   position:relative;
-  top:0%;
+  top:-10vh;
+  /* top:35%; */
   display:grid;
   grid-template-columns:repeat(2, 1fr);
-  width:fit-content;
+  width:60vw;
 }
 .peeps > * {
   animation: shine 5s linear infinite;
@@ -438,8 +443,8 @@ body{
   position:relative;
   width:clamp(30px, 10vw, 100px);
   border:0;
-  top:30%;
-  left:20vw;
+  top:-5vh;
+  left:25vw;
   padding:0;
   z-index:9999;
 }
@@ -462,8 +467,8 @@ body{
   color:var(--text-color);
   font-size:2vw;
   position:relative;
-  top:-2.5vh;
-  left:7vw;
+  top:-7vh;
+  left:12vw;
   margin:0;
   margin-right:10px;
   z-index:999
@@ -629,4 +634,54 @@ body{
   position:relative;
   /* margin-right:30vw; */
   /* margin-top:30px; */
+}
+.home{
+  position:relative;
+  display:flex;
+  width:fit-content;
+  left:50%;
+  transform: translateX(-50%);
+  top:10%;
+  font-size:5rem;
+  border-radius:20px;
+}
+.home:before{
+  color:black;
+}
+.butt
+{
+    outline: none;
+    border: none;
+    /* width: 90px; */
+    /* height: 30px; */
+    width:70vw;
+    background: transparent;
+    color: white;
+    position: relative;
+    font-size: 0.9em;
+    border-radius:30px;
+    padding:0px;
+    text-align:center;
+    /* margin: 17px 0; */
+}
+.home::before
+{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height:100%;
+    bottom: 0;
+    left: 0;
+    background: var(--text-color);
+    z-index: -2;
+    transform-origin: bottom;
+    transform: scaleY(0.15);
+   transition: all 500ms ease;
+}
+.home:hover:before
+{
+    transform: scaleY(1);
+}
+.home:hover{
+  color:var(--lingo-1dark)
 }
