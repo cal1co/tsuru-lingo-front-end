@@ -89,7 +89,13 @@ function KanaMatch(props) {
                 <option value="hi">{words[1][2]}</option> */}
             </div>
             :
-            <p>loading...</p>}
+            <div className="load-text">
+                <div class="load">
+                    <div class="load-one"></div>
+                    <div class="load-two"></div>
+                    <div class="load-three"></div>
+                </div>
+            </div>}
 
 
         </div>

@@ -165,7 +165,13 @@ function Lesson(props) {
                 {
                     loading
                     ?
-                    <p>loading...</p>
+                    <div className="load-text">
+                        <div class="load">
+                            <div class="load-one"></div>
+                            <div class="load-two"></div>
+                            <div class="load-three"></div>
+                        </div>
+                    </div>
                     :
                         <div>
                         {progress === 0 &&<div><h1>LESSON BRIEF</h1></div>}

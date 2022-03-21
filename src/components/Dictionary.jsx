@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { useState } from 'react' 
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 
 import { useNavigate } from "react-router-dom";
 
@@ -50,17 +52,25 @@ function Dictionary() {
 
     return (
         <div>
-            <h2>Dictionary</h2>
-            <form>
-                <input type="text" placeholder="search" onChange={e => setQuery(e.target.value)}/>
-                <button type="submit" onClick={search}>search</button>
-            </form>
+            <h2 className="dict-info" >Search for JP or EN words or phrases:</h2>
+            <Form className="dict-form">
+                <Form.Control className="dict-search" type="text" placeholder="JP/EN" onChange={e => setQuery(e.target.value)}/>
+                <Button variant="secondary" type="submit" onClick={search}>search</Button>
+            </Form>
 
             <div className="results">
             {
             loading 
             ? 
-            <h1>loading results for "{query}"</h1>
+            <div className="load-text">
+            <div class="load">
+            <div class="load-one"></div>
+            <div class="load-two"></div>
+            <div class="load-three"></div>
+            </div>
+
+            
+          </div>
             :
             <h1></h1>
             }    
@@ -72,14 +82,16 @@ function Dictionary() {
             && 
             results.map((result, index) => {
                 let defArr = result.senses
-                console.log(defArr)
+                // console.log(defArr)
                 return(
                     <div className="dict-results" key={index} id={index}>
-                        <h1 key="word">{result.slug}</h1>
+                        <h1 key="word">{result.slug} ({result.japanese[0].reading})</h1>
+
                         <h3>{defArr.map((definition, index)=>{
                             return(
                                 <div className="defs">
-                                    <h3>{definition.english_definitions.join(', ')}</h3>    
+                                    {/* <h3>{definition.english_definitions.join(', ')}</h3>     */}
+                                    <h3>{index+1}: {definition.english_definitions.join(', ')}</h3>    
                                 </div>
                             )
 

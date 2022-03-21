@@ -36,10 +36,12 @@ function CompleteLesson(props) {
     const [remaining, useRemaining] = useState(0)
     const [count, useCount] = useState(0)
     const [show, useShow] = useState(false)
+    const [failShow, useFailShow] = useState(false)
     const { lesson } = useParams()
 
     const handleClose = () => useShow(false);
     const handleShow = () => useShow(true);
+    const handleFailShow = () => useFailShow(true);
 
 
     let navigate = useNavigate();
@@ -103,7 +105,8 @@ function CompleteLesson(props) {
         if (strikes === 2){
             console.log('OH NO, YOU FAILED THIS LESSON')
             usePassFail(false)
-            confirm('OH NO, YOU FAILED THIS LESSON')
+            // confirm('OH NO, YOU FAILED THIS LESSON')
+            handleFailShow()
         } else {
             if (progressedOrder.length>0){
                 const chosenGame = progressedOrder.shift()
@@ -163,7 +166,13 @@ function CompleteLesson(props) {
                 {
                     loading
                     ?
-                    <p>loading...</p>
+                    <div className="load-text">
+                        <div class="load">
+                            <div class="load-one"></div>
+                            <div class="load-two"></div>
+                            <div class="load-three"></div>
+                        </div>
+                    </div>
                     :
                         <div>
                         {progress === 0 &&<div><h1>LESSON BRIEF</h1></div>}
@@ -200,6 +209,17 @@ function CompleteLesson(props) {
                 </Modal.Header>
                 <Modal.Body>
                 You have passed lesson {lesson}!
+                </Modal.Body>
+                <Modal.Footer>
+                <Button onClick={goHome}variant="primary">Back To lessons</Button>
+                </Modal.Footer>
+            </Modal>
+            <Modal show={failShow} onHide={handleClose} backdrop="static" keyboard={false}>
+                <Modal.Header closeButton>
+                <Modal.Title>Oh no!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                You have failed lesson {lesson}!
                 </Modal.Body>
                 <Modal.Footer>
                 <Button onClick={goHome}variant="primary">Back To lessons</Button>
