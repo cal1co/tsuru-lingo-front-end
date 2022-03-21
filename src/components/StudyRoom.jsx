@@ -19,6 +19,7 @@ function StudyRoom() {
     const [user, setUser] = useState('unset')
     const [modules, setModules] = useState([])
     const [dictionary, setDictionary] = useState(false)
+    const [loading, setLoading] = useState(true)
 
 
     useEffect(() => {
@@ -41,6 +42,7 @@ function StudyRoom() {
                 console.log(res.data)
                 setLang(res.data.code)
                 setModules(res.data.modules)
+                setLoading(false)
             })
             .catch((err) => {
                 console.log('error fetching data:', err)
@@ -62,12 +64,12 @@ function StudyRoom() {
 
     let goToLesson = (index, mod)=>{
         let pass = user.passed.length
-        if (pass < mod * 4){
+        if (pass == 0 || pass/(mod * 4) > 1/4){
             console.log('lesson:', index)
             lesson = pass + 1
             navigate(`/learn/jp/${lesson}`)
         } // call extra work lesson <-- randomly generated in backend
-        else {
+        else if(pass > mod * 4){
             navigate(`/learn/jp/${index+1}/complete`)
             axios.get(`${API_KEY}/complete/modules/${mod}`)
                 .then((res) => {
@@ -107,21 +109,32 @@ function StudyRoom() {
             </div>
             {dictionary ? <Dictionary/> :
             <div className="modules" key="display">
+                {loading 
+                ? 
+                <div className="load-text">
+                    <div class="load">
+                        <div class="load-one"></div>
+                        <div class="load-two"></div>
+                        <div class="load-three"></div>
+                    </div>
+                </div>
+                :
+                <div className="home-info">
+                    <h3>Lesson Progress: {user.passed.length}/16</h3>
+                    <ProgressBar className="home-progress" variant="warning" now={(user.passed.length)/16*100} />
+                </div>
+
+                }
+                
             {
                 modules.length > 0
                 ?
                 modules.map((e, index) => {
                     return(
                         <div>
-                            <div className="home-info">
-
-                                <h3>Lesson Progress: {user.passed.length}/16</h3>
-                                <ProgressBar className="home-progress" variant="warning" now={(user.passed.length)/16*100} />
-
-                            </div>
-                            <h1>My Lessons:</h1>
+                            
                             <div className="module-title" key={index} onClick={() => goToLesson(index, e.num)}>
-                                <h2 key={index}>
+                                <h2 key={index} className={"module-content " + "module"+index}>
                                     {e.title}
                                 </h2>
                             </div>

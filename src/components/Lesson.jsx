@@ -36,10 +36,12 @@ function Lesson(props) {
     const [remaining, useRemaining] = useState(0)
     const [count, useCount] = useState(0)
     const [show, useShow] = useState(false)
+    const [failShow, useFailShow] = useState(false)
     const { lesson } = useParams()
 
     const handleClose = () => useShow(false);
     const handleShow = () => useShow(true);
+    const handleFailShow = () => useFailShow(true);
 
     
     let navigate = useNavigate();
@@ -104,7 +106,7 @@ function Lesson(props) {
         if (strikes === 2){
             console.log('OH NO, YOU FAILED THIS LESSON')
             usePassFail(false)
-            confirm('OH NO, YOU FAILED THIS LESSON')
+            handleFailShow()
         } else {
             if (progressedOrder.length>0){
                 const chosenGame = progressedOrder.shift()
@@ -114,7 +116,7 @@ function Lesson(props) {
             } else {
                 usePassFail(true)
                 axios.post(`${API_KEY}/${lesson}/pass`, {token:localStorage.getItem("jwt"), lesson: data._id})
-                handleShow
+                handleShow()
                 // console.log(`you've progressed through the array!!`, questionOrder)
             }
             useNextStage(false)
@@ -191,6 +193,17 @@ function Lesson(props) {
                 </Modal.Header>
                 <Modal.Body>
                 You have passed lesson {lesson}!
+                </Modal.Body>
+                <Modal.Footer>
+                <Button onClick={goHome}variant="primary">Back To lessons</Button>
+                </Modal.Footer>
+            </Modal>
+            <Modal show={failShow} onHide={handleClose} backdrop="static" keyboard={false}>
+                <Modal.Header closeButton>
+                <Modal.Title>Oh no!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                You have failed lesson {lesson}!
                 </Modal.Body>
                 <Modal.Footer>
                 <Button onClick={goHome}variant="primary">Back To lessons</Button>

@@ -592,3 +592,24 @@ body{
 .dict-results:hover{
   border:2px solid blueviolet
 }
+
+.module-content{
+  display:flex;
+  justify-content:center;
+
+}
+.module2{
+  position:relative;
+  top:-25%;
+  margin-top:-43px;
+  margin-left:30vw;
+  margin-bottom:30px;
+}
+.module1{
+  position:relative;
+  margin-right:30vw;
+  margin-top:30px;
+}
+.module0{
+  margin-top:30px;
+}
