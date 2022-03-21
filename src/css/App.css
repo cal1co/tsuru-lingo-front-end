@@ -446,6 +446,7 @@ body{
   top:-5vh;
   left:25vw;
   padding:0;
+  overflow:hidden;
   z-index:9999;
 }
 .speech:hover{
@@ -456,6 +457,7 @@ body{
   position:relative;
   width:fit-content;
   top:25%;
+  /* overflow:hidden; */
   /* left: */
   /* transform:translateY(-50%) */
 }
@@ -468,7 +470,7 @@ body{
   font-size:2vw;
   position:relative;
   top:-7vh;
-  left:12vw;
+  left:15.5vw;
   margin:0;
   margin-right:10px;
   z-index:999
@@ -637,13 +639,14 @@ body{
 }
 .home{
   position:relative;
-  display:flex;
+  display:block;
   width:fit-content;
   left:50%;
   transform: translateX(-50%);
   top:10%;
   font-size:5rem;
   border-radius:20px;
+  text-align:center;
 }
 .home:before{
   color:black;
@@ -653,12 +656,13 @@ body{
     outline: none;
     border: none;
     /* width: 90px; */
-    /* height: 30px; */
+    height: 10vh;
     width:70vw;
     background: transparent;
     color: white;
     position: relative;
-    font-size: 0.9em;
+    font-size: 2em;
+    /* border: 1px solid red; */
     border-radius:30px;
     padding:0px;
     text-align:center;
