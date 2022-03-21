@@ -29,6 +29,8 @@ function Lesson(props) {
     const [nextStage, useNextStage] = useState(false)
     const [passFail, usePassFail] = useState(false)
     const [passCalled, usePassCalled] = useState(false)
+    const [remaining, useRemaining] = useState(0)
+    const [count, useCount] = useState(0)
     const { lesson } = useParams()
 
     useEffect(()=>{
@@ -84,6 +86,9 @@ function Lesson(props) {
 
     function next(){
         useStarted(true)
+        useRemaining(progressedOrder.length)
+
+        useCount(count + 1)
         if (strikes === 2){
             console.log('OH NO, YOU FAILED THIS LESSON')
             usePassFail(false)
@@ -154,7 +159,7 @@ function Lesson(props) {
                         {progress === 2 && <PictureMatch vocab={vocab} sendResult={questionResults}/>}
                         {progress === 3 && <PairMatch vocab={vocab} sendResult={questionResults}/>}
                         {progress === 4 && <NoEngMatch vocab={vocab} sendResult={questionResults}/>}
-
+                        {progress !== 0 && remaining}
                         </div>
                         // progress == 0
                         // ?

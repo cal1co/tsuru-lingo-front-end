@@ -19,7 +19,7 @@ function Landing() {
 
     useEffect(()=>{
         const modal = document.querySelector("#modal");
-        const openModal = document.querySelector("button");
+        const openModal = document.querySelector(".exist-acc");
         const body = document.querySelector("body");
         
         openModal.addEventListener("click", () => {
@@ -40,8 +40,11 @@ function Landing() {
 
     function openLogin(){
         console.log('open login has been called!!')
-        
     }
+    function openSignup(){
+        console.log('open signup has been called!!')
+    }
+
     function randomise(input){
         return input.sort((a,b) => 0.5 - Math.random())
     } 
@@ -99,7 +102,7 @@ function Landing() {
                         {/* <Link to="/"> */}
                         <div className="signup-buttons">
 
-                            <button className="button new-acc" onClick={openLogin}>GET STARTED</button>
+                            <button className="button new-acc" onClick={openSignup}>GET STARTED</button>
                         </div>
                         {/* </Link> */}
                         

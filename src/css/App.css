@@ -414,14 +414,21 @@ body{
 .container{
   display:inline-flex;
   position:relative;
+  width:fit-content;
   top:25%;
+  border:1px solid green;
+  /* left: */
+  /* transform:translateY(-50%) */
 }
 .container > h3{
+  overflow:hidden;
+  font-weight:800;
   width:clamp(30px, 10vw, 100px);
   color:var(--text-color);
-  font-size:0.8rem;
+  font-size:2vw;
   position:relative;
-  top:-2vh;
-  left:8.5vw;
+  top:-2.5vh;
+  left:9.5vw;
   margin:0;
+  z-index:999
 }

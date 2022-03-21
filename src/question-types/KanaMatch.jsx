@@ -32,7 +32,7 @@ function KanaMatch(props) {
 
     function vocabulary(vocab){
         let secondShuffle = randomise(vocab)
-        console.log('props in vocab',vocab)
+        // console.log('props in vocab',vocab)
         useWords(secondShuffle)
         answers(vocab)
     }
