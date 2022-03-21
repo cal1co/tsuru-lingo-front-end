@@ -742,3 +742,8 @@ u{
   width:70vw;
   left:25%;
 }
+.peep-bike{
+  transform:scaleX(-1);
+  border:none;
+  width:450px;
+}

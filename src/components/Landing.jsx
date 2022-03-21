@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import peep from './peep-4.svg'
 import peep2 from './peep-6.svg'
 import peepSitting from './peep-sitting-2.svg'
+import peepBike from './peep-sitting-3.svg'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
@@ -236,7 +237,7 @@ function Landing() {
                 <div className="app-benefits">
                     <h3 className="app-tag">Learn anytime anywhere</h3>
                     <h5 className="app-exp">Lorem ipsum dolor sit, <u>amet consectetur adipisicing</u> elit. Aperiam, repellat maiores, dicta saepe iste ex nemo ea, quia minima vitae reprehenderit <u>cumque dolorem atque! Culpa, dignissimos</u>. Voluptatum a deserunt odit?</h5>
-                
+                    <img src={peepBike} className="peep-bike" />
                 
                 </div>
                 <div className="app-line"></div>
