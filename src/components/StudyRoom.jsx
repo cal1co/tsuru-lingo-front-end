@@ -64,6 +64,7 @@ function StudyRoom() {
 
     let goToLesson = (index, mod)=>{
         let pass = user.passed.length
+        console.log('mod', mod)
         // if (pass == 0 || pass/(mod * 4) > 1/4){
         if (pass >= mod * 4){
             navigate(`/learn/jp/${index+1}/complete`)
@@ -76,7 +77,7 @@ function StudyRoom() {
                 })
             
         } // call extra work lesson <-- randomly generated in backend
-        else{
+        else if ((mod > (pass/4) && (pass/4) > (mod-1))){
             console.log('lesson:', index)
             lesson = pass + 1
             navigate(`/learn/jp/${lesson}`)
