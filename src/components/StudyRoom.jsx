@@ -24,10 +24,7 @@ function StudyRoom() {
     useEffect(() => {
         getLang()
         getUser()
-
     }, [lang])
-
-
 
     function dict(){
         // console.log('dict')
@@ -63,13 +60,24 @@ function StudyRoom() {
 
 
 
-
-    let goToLesson = (index)=>{
-        if (user.passed.length < 4){
+    let goToLesson = (index, mod)=>{
+        let pass = user.passed.length
+        if (pass < mod * 4){
             console.log('lesson:', index)
-            lesson = user.passed.length + 1
+            lesson = pass + 1
             navigate(`/learn/jp/${lesson}`)
+        } // call extra work lesson <-- randomly generated in backend
+        else {
+            navigate(`/learn/jp/${index+1}/complete`)
+            axios.get(`${API_KEY}/complete/modules/${mod}`)
+                .then((res) => {
+                    console.log("COMPLETE MODULE RES", res.data)
+                }) 
+                .catch((err) => {
+                    console.log("ERROR FETCHING PRAC LESSON", err)
+                })
         }
+        console.log(mod)
     }
 
 
@@ -112,7 +120,7 @@ function StudyRoom() {
 
                             </div>
                             <h1>My Lessons:</h1>
-                            <div className="module-title" key={index} onClick={() => goToLesson(index)}>
+                            <div className="module-title" key={index} onClick={() => goToLesson(index, e.num)}>
                                 <h2 key={index}>
                                     {e.title}
                                 </h2>

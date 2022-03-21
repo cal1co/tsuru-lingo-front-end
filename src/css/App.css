@@ -411,9 +411,9 @@ body{
   width:clamp(30px, 10vw, 100px);
   border:0;
   top:30%;
-  left:22.5vw;
+  left:20vw;
   padding:0;
-  z-index:0;
+  z-index:9999;
 }
 .speech:hover{
   cursor:pointer;
@@ -423,11 +423,11 @@ body{
   position:relative;
   width:fit-content;
   top:25%;
-  border:1px solid green;
   /* left: */
   /* transform:translateY(-50%) */
 }
 .container > h3{
+  position:relative;
   overflow:hidden;
   font-weight:800;
   width:clamp(30px, 10vw, 100px);
@@ -435,8 +435,9 @@ body{
   font-size:2vw;
   position:relative;
   top:-2.5vh;
-  left:9.5vw;
+  left:7vw;
   margin:0;
+  margin-right:10px;
   z-index:999
 }
 .progress{
@@ -490,5 +491,5 @@ body{
 }
 
 .modal{
-
+  z-index:99999999
 }

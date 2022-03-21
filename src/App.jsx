@@ -6,6 +6,7 @@ import StudyRoom from './components/StudyRoom'
 import Lesson from './components/Lesson'
 import LessonBrief from './components/LessonBrief'
 import Dictionary from './components/Dictionary'
+import CompleteLesson from './components/CompleteLesson'
 
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
               <Route exact path="/learn/:lang/dictionary" element={ <Dictionary/> } />
               <Route exact path="/learn/:lang/:lesson" element={ <Lesson/> } />
               <Route exact path="/learn/:lang/:lesson/brief" element={ <LessonBrief/> } />
+              <Route exact path="/learn/:lang/:lesson/complete" element={ <CompleteLesson/> } />
             </Routes>
 
         </Router>
