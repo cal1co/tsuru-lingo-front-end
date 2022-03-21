@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import * as THREE from 'three'
-import {Link} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../css/App.css'
 import Login from './Login'
 import { useEffect, useState } from 'react' 
 import peep from './peep-4.svg'
 import peep2 from './peep-6.svg'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+import axios from 'axios'
+
+const API_KEY = 'http://localhost:3000'
+
+
 // const peep = require('../images/peep-4.svg')
 
 function Landing() {
@@ -14,17 +22,18 @@ function Landing() {
     const [shuffle, useShuffle] = useState([])
     const [heyArr, useHeyArr] = useState([])
     const [count, useCount] = useState(0)
+    const [show, useShow] = useState(false)
     
 
 
     useEffect(()=>{
-        const modal = document.querySelector("#modal");
-        const openModal = document.querySelector(".exist-acc");
-        const body = document.querySelector("body");
+        // const modal = document.querySelector("#modal");
+        // const openModal = document.querySelector(".exist-acc");
+        // const body = document.querySelector("body");
         
-        openModal.addEventListener("click", () => {
-            modal.showModal();
-        });
+        // openModal.addEventListener("click", () => {
+        //     // modal.showModal();
+        // });
         
         getGreetings()
         useHeyArr(['Hello!', '你好!', 'Bonjour', 'こんにちわ！', 'Ciao!', 'Halo!'])
@@ -37,6 +46,41 @@ function Landing() {
         // })
         // modal.setCanceledOnTouchOutside
     }, [])
+
+    const handleClose = () => useShow(false);
+    const handleShow = () => useShow(true);
+    const [mail, setMail] = useState('')
+    const [pass, setPass] = useState('')
+
+    let navigate = useNavigate();
+
+    // const [currentUser, dispatch] = useReducer(reducer, {}) 
+
+
+    function login(e) {
+        e.preventDefault()
+        console.log('mail:', mail, 'pass:', pass)
+        axios.post(`${API_KEY}/login`, {
+            email:mail,
+            password:pass
+        })
+        .then((res) => {
+            console.log("LOGIN SUCCESSFUL", res)
+            // dispatch({type:'setUser'})
+
+            navigate('/learn/jp')
+            setUser(res.data.token)
+            // this.setState({ redirect: "/learn/jp" });
+        })
+        .catch((err) => {
+            console.log("Error logging in:", err)
+        })
+    }
+    function setUser(token){
+        localStorage.setItem("jwt", token)
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    }
+
 
     function openLogin(){
         console.log('open login has been called!!')
@@ -96,6 +140,47 @@ function Landing() {
 
                 <div className="landing">
                     
+
+                    <Modal show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+                        <Modal.Header closeButton>
+                            <Modal.Title id="contained-modal-title-vcenter">
+                            Modal heading
+                            </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            
+                        <Form>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control onChange={e => setMail(e.target.value)} type="email" placeholder="Enter email" />
+                                <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
+                                </Form.Text>
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control onChange={e => setPass(e.target.value)} type="password" placeholder="Password" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                                <Form.Check type="checkbox" label="Remember me" />
+                            </Form.Group>
+                        </Form>
+
+
+
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="mail">
+                            
+                            <Button variant="secondary" onClick={handleClose}>Close</Button>
+                        </div>
+                        <div className="pass">
+                            <Button variant="primary" onClick={login}>Login</Button>
+                            
+                        </div>
+                    </Modal.Footer>
+                    </Modal>
                     <h1 className="home">HOME PAGE - [insert pretty CSS here] nothing here except for welcome and login</h1>
                     {/* <h1 className="home">HOME PAGE - [insert pretty CSS here] nothing here except for welcome and login</h1> */}
                     <div className="signup">
@@ -103,6 +188,8 @@ function Landing() {
                         <div className="signup-buttons">
 
                             <button className="button new-acc" onClick={openSignup}>GET STARTED</button>
+
+                        
                         </div>
                         {/* </Link> */}
                         
@@ -110,7 +197,7 @@ function Landing() {
                         {/* <Link to="/login"> */}
                         <div className="signup-buttons">
 
-                            <button className="button exist-acc" onClick={openLogin}>
+                            <button className="button exist-acc" onClick={handleShow}>
                                 I ALREADY HAVE AN ACCOUNT
                             </button>
                         </div>
