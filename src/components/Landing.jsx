@@ -242,13 +242,13 @@ function Landing() {
                 <div className="app-line"></div>
 
                 <div className="added-info">
-                    <h3>More info</h3>
-                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolore eligendi similique perspiciatis minima voluptas esse eos libero fugit corrupti deserunt ex itaque doloremque ipsa sint eius error, provident ullam.</h5>
-                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolore eligendi similique perspiciatis minima voluptas esse eos libero fugit corrupti deserunt ex itaque doloremque ipsa sint eius error, provident ullam.</h5>
-                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolore eligendi similique perspiciatis minima voluptas esse eos libero fugit corrupti deserunt ex itaque doloremque ipsa sint eius error, provident ullam.</h5>
+                    <h3>More info:</h3>
+                    <li><h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolore eligendi similique perspiciatis minima voluptas esse eos libero fugit corrupti deserunt ex itaque doloremque ipsa sint eius error, provident ullam.</h5></li>
+                    <li><h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolore eligendi similique perspiciatis minima voluptas esse eos libero fugit corrupti deserunt ex itaque doloremque ipsa sint eius error, provident ullam.</h5></li>
+                    <li><h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolore eligendi similique perspiciatis minima voluptas esse eos libero fugit corrupti deserunt ex itaque doloremque ipsa sint eius error, provident ullam.</h5></li>
                 </div>
                 <footer>
-                    misc info
+                    <h5>Links</h5>
                 </footer>
             </div>
         );

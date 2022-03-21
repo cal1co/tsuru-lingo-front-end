@@ -64,12 +64,8 @@ function StudyRoom() {
 
     let goToLesson = (index, mod)=>{
         let pass = user.passed.length
-        if (pass == 0 || pass/(mod * 4) > 1/4){
-            console.log('lesson:', index)
-            lesson = pass + 1
-            navigate(`/learn/jp/${lesson}`)
-        } // call extra work lesson <-- randomly generated in backend
-        else if(pass > mod * 4){
+        // if (pass == 0 || pass/(mod * 4) > 1/4){
+        if (pass >= mod * 4){
             navigate(`/learn/jp/${index+1}/complete`)
             axios.get(`${API_KEY}/complete/modules/${mod}`)
                 .then((res) => {
@@ -78,6 +74,12 @@ function StudyRoom() {
                 .catch((err) => {
                     console.log("ERROR FETCHING PRAC LESSON", err)
                 })
+            
+        } // call extra work lesson <-- randomly generated in backend
+        else{
+            console.log('lesson:', index)
+            lesson = pass + 1
+            navigate(`/learn/jp/${lesson}`)
         }
         console.log(mod)
     }

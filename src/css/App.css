@@ -24,12 +24,13 @@ a{
 
 body{ 
   font-family: 'Noto Sans', sans-serif;
-  font-weight:700
+  font-weight:700;
 }
 
 .home-nav{
   position: sticky;
   background: var(--lingo-1); 
+  z-index:999999999999;
 
   top:0;
 }
@@ -257,7 +258,7 @@ body{
   overflow:hidden;
   height:fit-content;
   top:50%;
-  left:60%;
+  left:50%;
   transform:translate(-50%, -50%);
   float:left;
 }
@@ -751,16 +752,22 @@ u{
 }
 footer{
   position:relative;
-  top:90vh;
+  top:0vh;
   left:0vw;
+  background-color:var(--lingo-1);
+  height:20vh;
 }
 .added-info{
-  width:90vw;
+  width:80vw;
   position:relative;
   left:-350px;
   top:-190px;
   text-align:left;
 }
-.added-info > h5{
+.added-info > li > h5{
   margin-bottom:30px;
+}
+footer > * {
+  color:white;
+  left:0px;
 }
