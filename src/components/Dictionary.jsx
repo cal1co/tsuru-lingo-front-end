@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form'
 
 import { useNavigate } from "react-router-dom";
 
-const API_KEY = 'https://tsuru-lingo-backend.herokuapp.com/'
+const API_KEY = 'https://tsuru-lingo-backend.herokuapp.com'
 
 const JISHO_API = 'https://cors-anywhere.herokuapp.com/https://jisho.org/api/v1/search/words?keyword='
 // https://www.npmjs.com/package/cors-anywhere

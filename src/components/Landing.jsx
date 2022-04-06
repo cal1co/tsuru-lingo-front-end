@@ -13,7 +13,7 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import axios from 'axios'
 
-const API_KEY = 'https://tsuru-lingo-backend.herokuapp.com/'
+const API_KEY = 'https://tsuru-lingo-backend.herokuapp.com'
 
 
 // const peep = require('../images/peep-4.svg')
