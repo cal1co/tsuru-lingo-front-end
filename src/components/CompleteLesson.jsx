@@ -14,7 +14,7 @@ import Button from 'react-bootstrap/Button'
 
 
 
-const API_KEY = 'http://localhost:3000'
+const API_KEY = 'https://tsuru-lingo-backend.herokuapp.com/'
 
 
 function CompleteLesson(props) {

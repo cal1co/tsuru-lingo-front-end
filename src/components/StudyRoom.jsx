@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import axios from 'axios';
 
-const API_KEY = 'http://localhost:3000'
+const API_KEY = 'https://tsuru-lingo-backend.herokuapp.com/'
 
 
 function StudyRoom() {
